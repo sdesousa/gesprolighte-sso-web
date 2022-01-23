@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Formulaire de Creation des employes</title>
+</h:head> 
+<h:body>
+	<h3><h:outputText value="#{msg.register_form_home}"/></h3>
+		<h:form>
+        <h4>
+          <h:outputText value="#{msg.register_form_msg}" />
+        </h4>
+        <table>
+	        <tr>
+	              <td><h:outputText value="#{msg.register_file_number}"/>:</td>
+	              <td>
+	                <h:inputText value="#{ctrEmployeeBean.empDataBean.fileNumber}" required="true"  id="fileNumber" requiredMessage="#{msg.register_filenumber_required}"/>
+	                <h:message for="fileNumber" style="color : red"/>
+	              </td>
+	         </tr>
+            <tr>
+              <td><h:outputText value="#{msg.register_firstname}"/>:</td>
+              <td>
+                <h:inputText value="#{ctrEmployeeBean.empDataBean.firstname}" required="true"  id="prenom" requiredMessage="#{msg.register_prenom_required}"/>
+                <h:message for="prenom" style="color : red"/>
+              </td>
+            </tr>
+            <tr>
+              <td><h:outputText value="#{msg.register_name}"/>:</td>
+              <td>
+                <h:inputText value="#{ctrEmployeeBean.empDataBean.lastname}" required="true"  id="nom"/>
+                <h:message for="nom" style="color : red"/>
+              </td>
+            </tr>
+            <tr>
+              <td><h:outputText value="#{msg.register_mail}"/>:</td>
+              <td>
+                <h:inputText value="#{ctrEmployeeBean.empDataBean.email}" required="true"
+                             validator="#{ctrEmployeeBean.validateEmail}" id="email"/>
+                <h:message for="email"/>
+              </td>
+            </tr>
+            <tr>
+              <td><h:outputText value="#{msg.register_login}"/>:</td>
+              <td>
+                <h:inputText value="#{ctrEmployeeBean.empDataBean.login}" required="true" id="login"/>
+                <h:message for="login"/>
+              </td>
+            </tr>
+             <tr>
+              <td><h:outputText value="#{msg.register_password}"/>:</td>
+              <td>
+                <h:inputText value="#{ctrEmployeeBean.empDataBean.password}" required="true" id="password" type="password"/>
+                <h:message for="password"/>
+              </td>
+            </tr>
+            <tr>
+              <td><h:outputText value="#{msg.register_phone_number}"/>:</td>
+              <td>
+                <h:inputText value="#{ctrEmployeeBean.empDataBean.phoneNumber}" required="true" id="phoneNumber"/>
+                <h:message for="phoneNumber"/>
+              </td>
+            </tr>
+        </table>
+        <p><h:commandButton value="#{msg.register_submit_button}" action="#{ctrEmployeeBean.saveEmployee}" /></p>
+	</h:form>
+</h:body>
+</html>

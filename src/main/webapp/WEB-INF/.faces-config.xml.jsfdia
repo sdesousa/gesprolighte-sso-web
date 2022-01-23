@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#register.xhtml" PATH="/register.xhtml"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#register.xhtml:0" NAME="item"
+   PATH="/register.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{ctrEmployeeBean.saveEmployee}:#empList.xhtml"
+    NAME="output" PATH="/empList.xhtml" TARGET="rules:#empList.xhtml"
+    TITLE="#{ctrEmployeeBean.saveEmployee}:success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#empList.xhtml" PATH="/empList.xhtml"
+  SHAPE="448,17,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
