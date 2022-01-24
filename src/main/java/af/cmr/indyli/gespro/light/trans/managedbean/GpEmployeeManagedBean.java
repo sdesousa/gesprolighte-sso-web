@@ -23,6 +23,10 @@ public class GpEmployeeManagedBean {
 	@SuppressWarnings("unused")
 	private List<GpEmployee> empList = null;
 	
+	public GpEmployeeManagedBean() {
+		this.empList = this.empService.findAll();
+	}
+	
 	public String saveEmployee() throws GesproBusinessException {
 		this.empService.create(this.empDataBean);
 		this.empList = this.empService.findAll();	

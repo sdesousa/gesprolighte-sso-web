@@ -1,31 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
     http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
-    version="2.0">
-    <application>
+	version="2.0">
+	<application>
 		<!-- URL du package contenant les message_XX.properties -->
-       <resource-bundle>
-             <base-name>af.cmr.indyli.gespro.light.trans.properties.messages</base-name>
-             <var>msg</var>
-       </resource-bundle>
+		<resource-bundle>
+			<base-name>af.cmr.indyli.gespro.light.trans.properties.messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
 		<!-- Ajout de la langue par défaut et des langues supportées -->
-       <locale-config>
-             <default-locale>fr</default-locale>
-             <supported-locale>fr</supported-locale>
-             <supported-locale>en</supported-locale>
-       </locale-config>
-   </application>
-  
-  <navigation-rule>
-    <from-view-id>/register.xhtml</from-view-id>
-    <navigation-case>
-      <from-action>#{ctrEmployeeBean.saveEmployee}</from-action>
-      <from-outcome>success</from-outcome>
-      <to-view-id>/empList.xhtml</to-view-id>
-    </navigation-case>
-  </navigation-rule>
-  
+		<locale-config>
+			<default-locale>fr</default-locale>
+			<supported-locale>fr</supported-locale>
+			<supported-locale>en</supported-locale>
+		</locale-config>
+	</application>
+
+	<navigation-rule>
+		<!-- Routes pour employé -->
+		<from-view-id>/register.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrEmployeeBean.saveEmployee}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/empList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/updateEmp.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrEmployeeBean.updateEmploye}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/empList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<!-- Routes pour project -->
+		<from-view-id>/addProject.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjectBean.saveProject}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/listProjects.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/updateProject.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjectBean.updateProject}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/listProjects.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!--navigation-rule> < Routes pour project > <from-view-id>/addPhase.xhtml</from-view-id> 
+		<navigation-case> <from-action>#{ctrPhaseBean.saveProject}</from-action> 
+		<from-outcome>success</from-outcome> <to-view-id>/listPhases.xhtml</to-view-id> 
+		</navigation-case> </navigation-rule> <navigation-rule> <from-view-id>/addPhase.xhtml</from-view-id> 
+		<navigation-case> <from-action>#{ctrPhaseBean.saveProject}</from-action> 
+		<from-outcome>success</from-outcome> <to-view-id>/projectPhase.xhtml</to-view-id> 
+		</navigation-case> </navigation-rule> <navigation-rule> <from-view-id>/updatePhase.xhtml</from-view-id> 
+		<navigation-case> <from-action>#{ctrPhaseBean.updateProject}</from-action> 
+		<from-outcome>success</from-outcome> <to-view-id>/listPhases.xhtml</to-view-id> 
+		</navigation-case> </navigation-rule -->
+
 </faces-config>

@@ -4,37 +4,48 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
- 
+
 <h:head>
 	<title>JSF 2.0 Liste Personne</title>
-	<link rel="stylesheet" type="text/css" href="css/esic.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<script src="css/jquery.min.js" />
+	<script src="css/bootstrap.min.js" />
 </h:head>
 <h:body>
-	<h3><h:outputText value="#{msg.greeting_text}" /></h3>
-	<h1>Affichage de la Liste des employes</h1>
-    	
-    		<h:dataTable value="#{ctrEmployeeBean.empList}" var="pers"
-    			styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
-    		>
-    			<h:column>
-    				<!-- column header -->
-    				<f:facet name="header"><h:outputText value="#{msg.register_firstname}"/></f:facet>
+
+	<ui:include src="nav.xhtml"></ui:include>
+	<div class="container col-lg-6">
+		<h3>
+			<h:outputText value="#{msg.greeting_text}" />
+		</h3>
+		<h1>Affichage de la Liste des employes</h1>
+
+		<h:dataTable value="#{ctrEmployeeBean.empList}" var="pers"
+			styleClass="table">
+			<h:column>
+				<!-- column header -->
+				<f:facet name="header">
+					<h:outputText value="#{msg.register_firstname}" />
+				</f:facet>
     				#{pers.firstname}
     			</h:column>
-    			
-    			<h:column>
-    				<f:facet name="header"><h:outputText value="#{msg.register_name}"/></f:facet>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.register_name}" />
+				</f:facet>
     				#{pers.lastname}
     			</h:column>
-    			
-    			<h:column>
-    				<f:facet name="header"><h:outputText value="#{msg.register_mail}"/></f:facet>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.register_mail}" />
+				</f:facet>
     				#{pers.email}
     			</h:column>
-    		</h:dataTable>
+		</h:dataTable>
+	</div>
 </h:body>
 </html>
