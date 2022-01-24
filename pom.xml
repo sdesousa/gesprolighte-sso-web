@@ -1,19 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>af.cmr.indyli.gespro.light.trans</groupId>
-  <artifactId>gesprolight-web</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>gesprolight-web</name>
-  <description>Interface de gestion des projets</description>
-  <dependencies>
-        <!-- Import du business core de gespro -->
-        <dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>af.cmr.indyli.gespro.light.trans</groupId>
+	<artifactId>gesprolight-web</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>gesprolight-web</name>
+	<description>Interface de gestion des projets</description>
+	<dependencies>
+		<!-- Import du business core de gespro -->
+		<dependency>
 			<groupId>af.cmr.indyli.gespro.light.business</groupId>
 			<artifactId>gesprolight-business</artifactId>
 			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
-        
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -55,12 +57,17 @@
 			<artifactId>el-ri</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<!-- Pour les annotations de la JSR250 -->
-	<dependency>
-		<groupId>javax.annotation</groupId>
-		<artifactId>jsr250-api</artifactId>
-		<version>1.0</version>
-	</dependency> 
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
+	<!-- Version JDK -->
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
 </project>
