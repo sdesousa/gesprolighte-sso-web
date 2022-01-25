@@ -36,6 +36,14 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
+		<from-view-id>/empList.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrEmployeeBean.update}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/updateEmp.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
 		<!-- Routes pour project -->
 		<from-view-id>/addProject.xhtml</from-view-id>
 		<navigation-case>

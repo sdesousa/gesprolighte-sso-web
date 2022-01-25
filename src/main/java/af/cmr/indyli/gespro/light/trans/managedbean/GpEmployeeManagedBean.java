@@ -14,32 +14,39 @@ import af.cmr.indyli.gespro.light.business.exception.GesproBusinessException;
 import af.cmr.indyli.gespro.light.business.service.IGpEmployeeService;
 import af.cmr.indyli.gespro.light.business.service.impl.GpEmployeeServiceImpl;
 
-@ManagedBean(name="ctrEmployeeBean")
+@ManagedBean(name = "ctrEmployeeBean")
 @RequestScoped
 public class GpEmployeeManagedBean {
 
 	private GpEmployee empDataBean = new GpEmployee();
 	private IGpEmployeeService<GpEmployee> empService = new GpEmployeeServiceImpl();
-	@SuppressWarnings("unused")
+
 	private List<GpEmployee> empList = null;
-	
+
 	public GpEmployeeManagedBean() {
 		this.empList = this.empService.findAll();
 	}
-	
+
 	public String saveEmployee() throws GesproBusinessException {
 		this.empService.create(this.empDataBean);
-		this.empList = this.empService.findAll();	
-		 return "success";
+		this.empList = this.empService.findAll();
+		return "success";
 	}
-	
-	public void validateEmail(FacesContext context, UIComponent toValidate,
-	        Object value) throws ValidatorException {
-	    String eMail = (String) value;
-	    if (eMail.indexOf("@") < 0) {
-	        FacesMessage message = new FacesMessage("Adresse Email invalide !");
-	        throw new ValidatorException(message);
-	    }
+
+	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
+		String eMail = (String) value;
+		if (eMail.indexOf("@") < 0) {
+			FacesMessage message = new FacesMessage("Adresse Email invalide !");
+			throw new ValidatorException(message);
+		}
+	}
+
+	public String updateEmploye() {
+		return "succcess";
+	}
+
+	public String update() {
+		return "success";
 	}
 
 	public GpEmployee getEmpDataBean() {
