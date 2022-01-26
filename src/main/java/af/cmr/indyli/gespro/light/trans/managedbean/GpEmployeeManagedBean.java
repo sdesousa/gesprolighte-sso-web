@@ -1,5 +1,6 @@
 package af.cmr.indyli.gespro.light.trans.managedbean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -16,7 +17,7 @@ import af.cmr.indyli.gespro.light.business.service.impl.GpEmployeeServiceImpl;
 
 @ManagedBean(name = "ctrEmployeeBean")
 @RequestScoped
-public class GpEmployeeManagedBean {
+public class GpEmployeeManagedBean implements Serializable{
 
 	private GpEmployee empDataBean = new GpEmployee();
 	private IGpEmployeeService<GpEmployee> empService = new GpEmployeeServiceImpl();
@@ -41,14 +42,24 @@ public class GpEmployeeManagedBean {
 		}
 	}
 
-	public String updateEmploye() {
-		return "succcess";
-	}
-
-	public String update() {
+	public String updateEmpById() {
+		String editEmpId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("empId");
+		this.empDataBean = this.empService.findById(Integer.valueOf(editEmpId));
 		return "success";
 	}
 
+	public String updateEmployee() throws GesproBusinessException {
+		this.empService.update(this.empDataBean);
+		this.empList = this.empService.findAll();
+		return "success";
+	}
+
+	public String deleteEmpById() {
+		String delEmpId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("empId");
+		this.empService.deleteById(Integer.valueOf(delEmpId));
+		this.empList = this.empService.findAll();
+		return "success";
+	}
 	public GpEmployee getEmpDataBean() {
 		return empDataBean;
 	}

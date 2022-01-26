@@ -27,40 +27,37 @@
 			<to-view-id>/empList.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+
 	<navigation-rule>
 		<from-view-id>/updateEmp.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{ctrEmployeeBean.updateEmploye}</from-action>
+			<from-action>#{ctrEmployeeBean.updateEmployee}</from-action>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/empList.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+
 	<navigation-rule>
 		<from-view-id>/empList.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{ctrEmployeeBean.update}</from-action>
+			<from-action>#{ctrEmployeeBean.updateEmpById}</from-action>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/updateEmp.xhtml</to-view-id>
 		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<!-- Routes pour project -->
-		<from-view-id>/addProject.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{ctrProjectBean.saveProject}</from-action>
+			<from-action>#{ctrEmployeeBean.deleteEmpById}</from-action>
 			<from-outcome>success</from-outcome>
-			<to-view-id>/listProjects.xhtml</to-view-id>
-		</navigation-case>
-
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/updateProject.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{ctrProjectBean.updateProject}</from-action>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/listProjects.xhtml</to-view-id>
+			<to-view-id>/empList.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<!-- navigation-rule -->
+	<!-- Routes pour project -->
+	<!-- <from-view-id>/addProject.xhtml</from-view-id> <navigation-case> <from-action>#{ctrProjectBean.saveProject}</from-action> 
+		<from-outcome>success</from-outcome> <to-view-id>/listProjects.xhtml</to-view-id> 
+		</navigation-case> </navigation-rule> <navigation-rule> <from-view-id>/updateProject.xhtml</from-view-id> 
+		<navigation-case> <from-action>#{ctrProjectBean.updateProject}</from-action> 
+		<from-outcome>success</from-outcome> <to-view-id>/listProjects.xhtml</to-view-id> 
+		</navigation-case> </navigation-rule> -->
 	<!--navigation-rule> < Routes pour project > <from-view-id>/addPhase.xhtml</from-view-id> 
 		<navigation-case> <from-action>#{ctrPhaseBean.saveProject}</from-action> 
 		<from-outcome>success</from-outcome> <to-view-id>/listPhases.xhtml</to-view-id> 

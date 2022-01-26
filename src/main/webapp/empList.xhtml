@@ -11,73 +11,86 @@
 <h:head>
 	<title>JSF 2.0 Liste Personne</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-	<script src="css/jquery.min.js" />
-	<script src="css/bootstrap.min.js" />
 
 	<style type="text/css">
 .btn-space {
 	margin-right: 5px;
 }
+
+.btn-space-bottom {
+	margin-bottom: 5px
+}
 </style>
 </h:head>
-<h:body>
 
+<h:body>
 	<ui:include src="nav.xhtml"></ui:include>
 	<div class="container">
 		<h3>
 			<h:outputText value="#{msg.greeting_text}" />
 		</h3>
 		<h1>Affichage de la Liste des employes</h1>
+		<h:form>
 
-		<h:dataTable value="#{ctrEmployeeBean.empList}" var="pers"
-			class="table table-striped table-hover table-bordered tableUpdated">
-			<h:column>
-				<!-- column header -->
-				<f:facet name="header">
-					<h:outputText value="#{msg.register_firstname}" />
-				</f:facet>
+			<h:commandButton action="/register.xhtml?faces-redirect=true"
+				value="Ajouter"
+				styleClass="btn btn-success col-xs-3 btn-space-bottom" />
+
+
+			<h:dataTable value="#{ctrEmployeeBean.empList}" var="pers"
+				class="table table-striped table-hover table-bordered tableUpdated">
+				<h:column>
+					<!-- column header -->
+					<f:facet name="header">
+						<h:outputText value="#{msg.register_firstname}" />
+					</f:facet>
     				#{pers.firstname}
     			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.register_name}" />
-				</f:facet>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.register_name}" />
+					</f:facet>
     				#{pers.lastname}
     			</h:column>
 
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.register_mail}" />
-				</f:facet>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.register_mail}" />
+					</f:facet>
     				#{pers.email}
     			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.register_file_number}" />
-				</f:facet>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.register_file_number}" />
+					</f:facet>
     				#{pers.fileNumber}
     			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.register_phone_number}" />
-				</f:facet>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.register_phone_number}" />
+					</f:facet>
     				#{pers.phoneNumber}
     			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.btn_tab}" />
-				</f:facet>
-				<h:commandButton action="#{ctrEmployeeBean.update}" styleClass="btn btn-primary btn-space"
-					value="#{msg.btn_update}" />
-				<h:commandButton styleClass="btn btn-danger"
-					value="#{msg.btn_delete}" />
-			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.btn_tab}" />
+					</f:facet>
+					<h:commandButton value="#{msg.btn_update}"
+						action="#{ctrEmployeeBean.updateEmpById}"
+						styleClass="btn btn-primary btn-space">
+						<f:param name="empId" value="#{pers.id}" />
+					</h:commandButton>
+					<h:commandButton styleClass="btn btn-danger"
+						action="#{ctrEmployeeBean.deleteEmpById}"
+						value="#{msg.btn_delete}">
+						<f:param name="empId" value="#{pers.id}" />
 
-		</h:dataTable>
-		<center>
-			<h:commandButton action="/register.xhtml?faces-redirect=true"
-				value="Ajouter" class="btn btn-success col-xs-3 centred" />
-		</center>
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+
+		</h:form>
 	</div>
 </h:body>
 </html>
