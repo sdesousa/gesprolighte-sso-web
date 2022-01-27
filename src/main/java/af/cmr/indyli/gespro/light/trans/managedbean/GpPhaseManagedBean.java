@@ -14,6 +14,11 @@ import af.cmr.indyli.gespro.light.business.service.impl.GpPhaseServiceImpl;
 @RequestScoped
 public class GpPhaseManagedBean implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2777253987173095686L;
+
 	private GpPhase phaseDataBean = new GpPhase();
 	private IGpPhaseService phaseService = new GpPhaseServiceImpl();
 
