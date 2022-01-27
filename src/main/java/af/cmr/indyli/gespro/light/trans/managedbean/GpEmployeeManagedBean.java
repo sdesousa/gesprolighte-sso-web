@@ -17,8 +17,12 @@ import af.cmr.indyli.gespro.light.business.service.impl.GpEmployeeServiceImpl;
 
 @ManagedBean(name = "ctrEmployeeBean")
 @RequestScoped
-public class GpEmployeeManagedBean implements Serializable{
+public class GpEmployeeManagedBean implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private GpEmployee empDataBean = new GpEmployee();
 	private IGpEmployeeService<GpEmployee> empService = new GpEmployeeServiceImpl();
 
@@ -60,6 +64,7 @@ public class GpEmployeeManagedBean implements Serializable{
 		this.empList = this.empService.findAll();
 		return "success";
 	}
+
 	public GpEmployee getEmpDataBean() {
 		return empDataBean;
 	}

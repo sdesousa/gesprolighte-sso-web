@@ -7,85 +7,80 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-
 <h:head>
-	<title>Add Project</title>
-	 
-
-	<style type="text/css">
-.btn-space {
-	margin-right: 5px;
-}
-</style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>Formulaire de Creation des employes</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 </h:head>
 <h:body>
-<ui:include src="nav.xhtml"></ui:include>
-	<div class="container">
-		<h3><h:outputText value="#{msg.register_form_home}"/></h3>
-		<h:form>
-        <h4>
-          <h:outputText value="#{msg.register_form_msg}" />
-        </h4>
-        <table>
-	        <tr>
-	              <td><h:outputText value="#{msg.register_file_number}"/>:</td>
-	              <td>
-	                <h:inputText value="#{ctrEmployeeBean.empDataBean.fileNumber}" required="true"  id="fileNumber" requiredMessage="#{msg.register_filenumber_required}"/>
-	                <h:message for="fileNumber" style="color : red"/>
-	              </td>
-	         </tr>
-            <tr>
-              <td><h:outputText value="#{msg.register_firstname}"/>:</td>
-              <td>
-                <h:inputText value="#{ctrEmployeeBean.empDataBean.firstname}" required="true"  id="prenom" requiredMessage="#{msg.register_prenom_required}"/>
-                <h:message for="prenom" style="color : red"/>
-              </td>
-            </tr>
-            <tr>
-              <td><h:outputText value="#{msg.register_name}"/>:</td>
-              <td>
-                <h:inputText value="#{ctrEmployeeBean.empDataBean.lastname}" required="true"  id="nom"/>
-                <h:message for="nom" style="color : red"/>
-              </td>
-            </tr>
-            <tr>
-              <td><h:outputText value="#{msg.register_mail}"/>:</td>
-              <td>
-                <h:inputText value="#{ctrEmployeeBean.empDataBean.email}" required="true"
-                             validator="#{ctrEmployeeBean.validateEmail}" id="email"/>
-                <h:message for="email"/>
-              </td>
-            </tr>
-            <tr>
-              <td><h:outputText value="#{msg.register_login}"/>:</td>
-              <td>
-                <h:inputText value="#{ctrEmployeeBean.empDataBean.login}" required="true" id="login"/>
-                <h:message for="login"/>
-              </td>
-            </tr>
-             <tr>
-              <td><h:outputText value="#{msg.register_password}"/>:</td>
-              <td>
-                <h:inputText value="#{ctrEmployeeBean.empDataBean.password}" required="true" id="password" type="password"/>
-                <h:message for="password"/>
-              </td>
-            </tr>
-            <tr>
-              <td><h:outputText value="#{msg.register_phone_number}"/>:</td>
-              <td>
-                <h:inputText value="#{ctrEmployeeBean.empDataBean.phoneNumber}" required="true" id="phoneNumber"/>
-                <h:message for="phoneNumber"/>
-              </td>
-            </tr>
-        </table>
-        <p><h:commandButton value="#{msg.register_submit_button}" action="#{ctrEmployeeBean.saveEmployee}" /></p>
-	</h:form>
-	</div>
- 
-       
-</h:body>
+	<ui:include src="nav.xhtml"></ui:include>
+		<div class="container">
+		<h3>
+			<h:outputText value="#{msg.register_form_home}" />
+		</h3>
+		<div class="form-group">
+			<h:form>
+				<h4>
+					<h:outputText value="#{msg.register_form_msg}" />
+				</h4>
 
+
+				<h:outputText value="#{msg.register_file_number}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrEmployeeBean.empDataBean.fileNumber}" required="true"
+					id="fileNumber"
+					requiredMessage="#{msg.register_filenumber_required}" />
+				<h:message for="fileNumber" style="color : red" />
+
+
+				<h:outputText value="#{msg.register_firstname}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrEmployeeBean.empDataBean.firstname}" required="true"
+					id="prenom" requiredMessage="#{msg.register_prenom_required}" />
+				<h:message for="prenom" style="color : red" />
+
+
+				<h:outputText value="#{msg.register_name}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrEmployeeBean.empDataBean.lastname}" required="true"
+					id="nom" />
+				<h:message for="nom" style="color : red" />
+
+
+				<h:outputText value="#{msg.register_mail}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrEmployeeBean.empDataBean.email}" required="true"
+					validator="#{ctrEmployeeBean.validateEmail}" id="email" />
+				<h:message for="email" />
+
+
+				<h:outputText value="#{msg.register_login}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrEmployeeBean.empDataBean.login}" required="true"
+					id="login" />
+				<h:message for="login" />
+
+
+				<h:outputText value="#{msg.register_password}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrEmployeeBean.empDataBean.password}" required="true"
+					id="password" type="password" />
+				<h:message for="password" />
+
+
+				<h:outputText value="#{msg.register_phone_number}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrEmployeeBean.empDataBean.phoneNumber}" required="true"
+					id="phoneNumber" />
+				<h:message for="phoneNumber" />
+
+
+				<br/>
+					<h:commandButton styleClass="btn btn-success"
+						value="#{msg.register_submit_button}"
+						action="#{ctrEmployeeBean.saveEmployee}" />
+				
+			</h:form>
+		</div>
+	</div>
+</h:body>
 </html>

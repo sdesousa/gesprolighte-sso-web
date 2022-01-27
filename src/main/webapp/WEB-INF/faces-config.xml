@@ -50,6 +50,16 @@
 			<to-view-id>/empList.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/listProjects.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjetBean.getProjectPhase}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/listPhases.xhtml</to-view-id>
+		</navigation-case>
+		 
+	</navigation-rule>
 	<!-- navigation-rule -->
 	<!-- Routes pour project -->
 	<!-- <from-view-id>/addProject.xhtml</from-view-id> <navigation-case> <from-action>#{ctrProjectBean.saveProject}</from-action> 

@@ -3,76 +3,40 @@ package af.cmr.indyli.gespro.light.trans.managedbean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 
-import af.cmr.indyli.gespro.light.business.entity.GpEmployee;
-import af.cmr.indyli.gespro.light.business.exception.GesproBusinessException;
-import af.cmr.indyli.gespro.light.business.service.IGpEmployeeService;
-import af.cmr.indyli.gespro.light.business.service.impl.GpEmployeeServiceImpl;
+import af.cmr.indyli.gespro.light.business.entity.GpPhase;
+import af.cmr.indyli.gespro.light.business.service.IGpPhaseService;
+import af.cmr.indyli.gespro.light.business.service.impl.GpPhaseServiceImpl;
 
-@ManagedBean(name = "ctrEmployeeBean")
+@ManagedBean(name = "ctrPhaseBean")
 @RequestScoped
-public class GpPhaseManagedBean implements Serializable{
+public class GpPhaseManagedBean implements Serializable {
 
-	private GpEmployee empDataBean = new GpEmployee();
-	private IGpEmployeeService<GpEmployee> empService = new GpEmployeeServiceImpl();
+	private GpPhase phaseDataBean = new GpPhase();
+	private IGpPhaseService phaseService = new GpPhaseServiceImpl();
 
-	private List<GpEmployee> empList = null;
+	private List<GpPhase> phaseList = null;
 
 	public GpPhaseManagedBean() {
-		this.empList = this.empService.findAll();
+		this.phaseList = this.phaseService.findAll();
 	}
 
-	public String saveEmployee() throws GesproBusinessException {
-		this.empService.create(this.empDataBean);
-		this.empList = this.empService.findAll();
-		return "success";
+	public GpPhase getPhaseDataBean() {
+		return phaseDataBean;
 	}
 
-	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
-		String eMail = (String) value;
-		if (eMail.indexOf("@") < 0) {
-			FacesMessage message = new FacesMessage("Adresse Email invalide !");
-			throw new ValidatorException(message);
-		}
+	public void setPhaseDataBean(GpPhase phaseDataBean) {
+		this.phaseDataBean = phaseDataBean;
 	}
 
-	public String updateEmpById() {
-		String editEmpId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("empId");
-		this.empDataBean = this.empService.findById(Integer.valueOf(editEmpId));
-		return "success";
+	public List<GpPhase> getPhaseList() {
+		return phaseList;
 	}
 
-	public String updateEmployee() throws GesproBusinessException {
-		this.empService.update(this.empDataBean);
-		this.empList = this.empService.findAll();
-		return "success";
+	public void setPhaseList(List<GpPhase> phaseList) {
+		this.phaseList = phaseList;
 	}
 
-	public String deleteEmpById() {
-		String delEmpId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("empId");
-		this.empService.deleteById(Integer.valueOf(delEmpId));
-		this.empList = this.empService.findAll();
-		return "success";
-	}
-	public GpEmployee getEmpDataBean() {
-		return empDataBean;
-	}
-
-	public void setEmpDataBean(GpEmployee empDataBean) {
-		this.empDataBean = empDataBean;
-	}
-
-	public List<GpEmployee> getEmpList() {
-		return empList;
-	}
-
-	public void setEmpList(List<GpEmployee> empList) {
-		this.empList = empList;
-	}
 }
