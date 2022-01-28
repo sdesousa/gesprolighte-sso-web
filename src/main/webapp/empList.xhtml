@@ -20,8 +20,7 @@
 	}
 	</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 </h:head>
 
 <h:body>
@@ -33,9 +32,9 @@
 		<h1>Affichage de la Liste des employes</h1>
 		<h:form>
 
-			<h:commandButton action="/register.xhtml?faces-redirect=true"
+			<p class="col-md-12 bg-light text-right"><h:commandButton action="/register.xhtml?faces-redirect=true"
 				value="Ajouter"
-				styleClass="btn btn-success col-xs-3 btn-space-bottom" />
+				styleClass="btn btn-success" /></p>
 
 
 			<h:dataTable value="#{ctrEmployeeBean.empList}" var="pers"

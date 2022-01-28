@@ -41,7 +41,6 @@
 		<from-view-id>/empList.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{ctrEmployeeBean.updateEmpById}</from-action>
-			<from-outcome>success</from-outcome>
 			<to-view-id>/updateEmp.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
@@ -50,7 +49,8 @@
 			<to-view-id>/empList.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
+	<!-- Nav cases Project -->
 	<navigation-rule>
 		<from-view-id>/listProjects.xhtml</from-view-id>
 		<navigation-case>
@@ -58,25 +58,20 @@
 			<from-outcome>success</from-outcome>
 			<to-view-id>/listPhases.xhtml</to-view-id>
 		</navigation-case>
-		 
+		<navigation-case>
+			<from-action>#{ctrProjetBean.addProject}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/addProject.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
-	<!-- navigation-rule -->
-	<!-- Routes pour project -->
-	<!-- <from-view-id>/addProject.xhtml</from-view-id> <navigation-case> <from-action>#{ctrProjectBean.saveProject}</from-action> 
-		<from-outcome>success</from-outcome> <to-view-id>/listProjects.xhtml</to-view-id> 
-		</navigation-case> </navigation-rule> <navigation-rule> <from-view-id>/updateProject.xhtml</from-view-id> 
-		<navigation-case> <from-action>#{ctrProjectBean.updateProject}</from-action> 
-		<from-outcome>success</from-outcome> <to-view-id>/listProjects.xhtml</to-view-id> 
-		</navigation-case> </navigation-rule> -->
-	<!--navigation-rule> < Routes pour project > <from-view-id>/addPhase.xhtml</from-view-id> 
-		<navigation-case> <from-action>#{ctrPhaseBean.saveProject}</from-action> 
-		<from-outcome>success</from-outcome> <to-view-id>/listPhases.xhtml</to-view-id> 
-		</navigation-case> </navigation-rule> <navigation-rule> <from-view-id>/addPhase.xhtml</from-view-id> 
-		<navigation-case> <from-action>#{ctrPhaseBean.saveProject}</from-action> 
-		<from-outcome>success</from-outcome> <to-view-id>/projectPhase.xhtml</to-view-id> 
-		</navigation-case> </navigation-rule> <navigation-rule> <from-view-id>/updatePhase.xhtml</from-view-id> 
-		<navigation-case> <from-action>#{ctrPhaseBean.updateProject}</from-action> 
-		<from-outcome>success</from-outcome> <to-view-id>/listPhases.xhtml</to-view-id> 
-		</navigation-case> </navigation-rule -->
+
+	<navigation-rule>
+		<from-view-id>/addProject.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjetBean.saveProject}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/listProjects.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
