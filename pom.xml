@@ -3,16 +3,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>af.cmr.indyli.gespro.light.trans</groupId>
-	<artifactId>gesprolight-web</artifactId>
+	<artifactId>gesprolighte-web</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>gesprolight-web</name>
+	<name>gesprolighte-web</name>
 	<description>Interface de gestion des projets</description>
 	<dependencies>
 		<!-- Import du business core de gespro -->
 		<dependency>
 			<groupId>af.cmr.indyli.gespro.light.business</groupId>
-			<artifactId>gesprolight-business</artifactId>
+			<artifactId>gesprolighte-business</artifactId>
 			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
 
