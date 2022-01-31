@@ -42,51 +42,60 @@
 					required="true" id="description" />
 				<h:message for="description" style="color : red" />
 
-				<!-- 				Input start date
+				<!-- 				Input start date -->
 				<h:outputText value="#{msg.startDate}" />
-				<input type="date"
+				<h:inputText type="date"
 					value="#{ctrProjetBean.projectDataBean.startDate}"
-					class="form-control" id="startDate" required="true" />
+					class="form-control" id="startDate" required="true">
+					<f:convertDateTime pattern="dd-mm-yyyy" />
+				</h:inputText>
 				<h:message for="startDate" />
-
-				End Date
+				<h:outputText value="#{ctrProjetBean.projectDataBean.startDate}">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
+				</h:outputText>
+				<!-- End Date -->
 				<h:outputText value="#{msg.endDate}" />
-				<input type="date" value="#{ctrProjetBean.projectDataBean.endDate}"
-					class="form-control" id="endDate" required="true" />
+				<h:inputText type="date"
+					value="#{ctrProjetBean.projectDataBean.endDate}"
+					class="form-control" id="endDate" required="true">
+					<f:convertDateTime pattern="dd-mm-yyyy" />
+				</h:inputText>
 				<h:message for="endDate" style="color : red" />
- -->
+
 				<!-- Montant -->
-				<!-- 	<h:outputText value="#{msg.amount}" />
+				<h:outputText value="#{msg.amount}" />
 				<h:inputText styleClass="form-control"
 					value="#{ctrProjetBean.projectDataBean.amount}" required="true"
 					id="amount"
 					requiredMessage="#{msg.register_project_amont_required}" />
-				<h:message for="amount" style="color : red" /> -->
+				<h:message for="amount" style="color : red" />
+
+				<!-- Chef Project -->
+				<h:outputText value="#{msg.project_mp}" />
+				<h:selectOneMenu id="gpProject"
+					value="#{ctrProjetBean.projectDataBean}" styleClass="form-control">
+					<f:selectItems value="#{ctrProjetBean.projectManagers}"
+						var="project" itemLabel="#{project.firstname}" />
+				</h:selectOneMenu>
 
 				<!-- Organisation -->
 				<h:outputText value="#{msg.project_org}" />
-			
-				<h:selectOneMenu value="#{ctrProjetBean.idOrg}">
-					<f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
-					<f:selectItems value="#{ctrProjetBean.organizations}"  var="#{org}" itemValue="#{org.id}" />
-				</h:selectOneMenu>
-
-				<!-- Chef Project -->
-				<!-- <h:outputText value="#{msg.project_mp}" />
-				<h:selectOneMenu
-					value="#{ctrProjetBean.idEmp}"
+				<h:selectOneMenu id="gpOrganization"
+					value="#{ctrProjetBean.organizationDataBean}"
 					styleClass="form-control">
-					<f:selectItems value="#{ctrProjetBean.projectManagers}" var="p"
-						itemValue="#{p.id}" itemLabel="#{p.firstname}" />
-				</h:selectOneMenu>
- -->
+					<f:selectItem itemLabel="Choose Organisation"
+						noSelectionOption="true" />
+					<f:selectItems value="#{ctrProjetBean.organizations}"
+						var="organization" itemLabel="#{organization.name}" />
 
-				<br />
-				<h:commandButton styleClass="btn btn-success"
+				</h:selectOneMenu>
+ 				<br/>
+				<h:commandButton styleClass="btn btn-success " 
 					value="#{msg.submit_button}" action="#{ctrProjetBean.saveProject}" />
 
 			</h:form>
 		</div>
+
 	</div>
 </h:body>
 </html>
