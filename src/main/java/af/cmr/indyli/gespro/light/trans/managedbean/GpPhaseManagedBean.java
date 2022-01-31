@@ -25,23 +25,8 @@ public class GpPhaseManagedBean implements Serializable {
 	private List<GpPhase> phaseList = null;
 
 	public GpPhaseManagedBean() {
-		this.phaseList = this.phaseService.findAll();
+		// TODO : recuperez la liste de tout les GpPhase
 	}
 
-	public GpPhase getPhaseDataBean() {
-		return phaseDataBean;
-	}
-
-	public void setPhaseDataBean(GpPhase phaseDataBean) {
-		this.phaseDataBean = phaseDataBean;
-	}
-
-	public List<GpPhase> getPhaseList() {
-		return phaseList;
-	}
-
-	public void setPhaseList(List<GpPhase> phaseList) {
-		this.phaseList = phaseList;
-	}
-
+	// TODO : Génère les getter et les setter
 }

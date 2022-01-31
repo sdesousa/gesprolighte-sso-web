@@ -23,7 +23,7 @@
 </h:head>
 <h:body>
 
-	<ui:include src="nav.xhtml"></ui:include>
+	<!-- TODO afficher la barre de menu -->	 
 	<div class="container">
 		<h3>
 			<h:outputText value="#{msg.greeting_text}" />
@@ -41,70 +41,7 @@
 				 <a href="addProject.xhtml" class="btn btn-success   float-right">Ajouter une phase</a> 
 			</div>
         </div>
-		<h:dataTable value="#{ctrProjetBean.phaseList}" var="projectphase"
-			class="table table-striped table-hover table-bordered tableUpdated">
-			
-			<h:column>
-				<!-- column header -->
-				<f:facet name="header">
-					<h:outputText value="#{msg.amount}" /> 
-				</f:facet>
-    				#{projectphase.amount}
-    			</h:column>
-			 
-            <h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.description}" />
-				</f:facet>
-    				#{projectphase.description}
-    		</h:column>
-    		<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.projectCode}" />
-				</f:facet>
-    				#{projectphase.phaseCode}
-    		</h:column>
-    		<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.creationDate}" />
-				</f:facet>
-    				#{projectphase.startDate}
-    		</h:column>
-    		<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.endDate}" />
-				</f:facet>
-    				#{projectphase.endDate}
-    		</h:column>
-	 		 
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.status}" />
-				</f:facet>
-    			
-    				#{projectphase.status}
-    		</h:column>
-    		<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.isended}" />
-				</f:facet> 
-    				#{projectphase.isEnded}
-    		</h:column>
-    		<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.creationDate}" />
-				</f:facet>
-    				#{projectphase.creationDate}
-    		</h:column>
-    		<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{msg.updateDate}" />
-				</f:facet>
-    				#{projectphase.updateDate}
-    		</h:column>
-    		 
-		</h:dataTable>
-		
+	<!-- TODO afficher la liste des phases dans un tableau -->		
 	</div>
        
 </h:body>

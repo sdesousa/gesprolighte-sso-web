@@ -39,18 +39,18 @@ public class GpProjectManagedBean implements Serializable {
 	private String idEmp;
 
 	public GpProjectManagedBean() {
-		this.projectList = this.projetService.findAll();
+		// TODO : recuperez liste tous les projets
 	}
 
 	public String saveProject() throws GesproBusinessException {
-		this.projetService.create(this.projectDataBean);
-		this.projectList = this.projetService.findAll();
+		// TODO : appellez le service de creation de projects
+		// TODO : recuperez la nouvelle liste des projets
 
-		System.out.println("ID ORG :" + idOrg + "   ID EMP : " + idEmp);
 		return "success";
 	}
 
 	public String addProject() {
+
 		this.organizations = this.orgService.findAll();
 		this.projectManagers = this.empService.findAll();
 
@@ -64,7 +64,8 @@ public class GpProjectManagedBean implements Serializable {
 	public String getProjectPhase() {
 		String projectId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
 
-		this.phaseList = this.phaseService.findByProjectId(Integer.valueOf(projectId));
+		// TODO : Récupérer Un project à partir de la valeur entière de la chaîne de
+		// caractères projectId
 
 		return "success";
 	}
@@ -73,76 +74,6 @@ public class GpProjectManagedBean implements Serializable {
 		return "success";
 	}
 
-	public GpProject getProjectDataBean() {
-		return projectDataBean;
-	}
-
-	public void setProjectDataBean(GpProject projectDataBean) {
-		this.projectDataBean = projectDataBean;
-	}
-
-	public GpOrganization getOrganizationDataBean() {
-		return organizationDataBean;
-	}
-
-	public void setOrganizationDataBean(GpOrganization organizationDataBean) {
-		this.organizationDataBean = organizationDataBean;
-	}
-
-	public GpOrganization getOrg() {
-		return org;
-	}
-
-	public void setOrg(GpOrganization org) {
-		this.org = org;
-	}
-
-	public List<GpProject> getProjectList() {
-		return projectList;
-	}
-
-	public void setProjectList(List<GpProject> projectList) {
-		this.projectList = projectList;
-	}
-
-	public List<GpPhase> getPhaseList() {
-		return phaseList;
-	}
-
-	public void setPhaseList(List<GpPhase> phaseList) {
-		this.phaseList = phaseList;
-	}
-
-	public List<GpProjectManager> getProjectManagers() {
-		return projectManagers;
-	}
-
-	public void setProjectManagers(List<GpProjectManager> projectManagers) {
-		this.projectManagers = projectManagers;
-	}
-
-	public List<GpOrganization> getOrganizations() {
-		return organizations;
-	}
-
-	public void setOrganizations(List<GpOrganization> organizations) {
-		this.organizations = organizations;
-	}
-
-	public String getIdOrg() {
-		return idOrg;
-	}
-
-	public void setIdOrg(String idOrg) {
-		this.idOrg = idOrg;
-	}
-
-	public String getIdEmp() {
-		return idEmp;
-	}
-
-	public void setIdEmp(String idEmp) {
-		this.idEmp = idEmp;
-	}
+	// TODO : Génère les getter et les setter
 
 }
