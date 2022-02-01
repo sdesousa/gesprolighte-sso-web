@@ -9,7 +9,7 @@
 
 
 <h:head>
-	<title>JSF 2.0 Liste Personne</title>
+	<title>Liste des projets</title>
 
 
 	<style type="text/css">
@@ -21,23 +21,14 @@
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
 </h:head>
 <h:body>
-
-	<!-- TODO afficher la barre de menu -->	
+	<ui:include src="nav.xhtml"></ui:include>
 	<div class="container">
-		<h3>
-			<h:outputText value="#{msg.greeting_text}" />
-		</h3>
-		<h1>Affichage de la Liste des Projets</h1>
-
-		<h:form>
-			<p class="col-md-12 bg-light text-right">
-				<h:commandButton value="Ajouter" action="#{ctrProjetBean.addProject}"
-					styleClass="btn btn-success" />
-
+		<div class="jumbotron text-center">
+			<h4 class="display-4">Bravooooo</h4>
+			<p class="lead">C'est a vous de coder cette partie</p>
+			<p class="lead">
 			</p>
-			
-			 <!-- TODO afficher la liste des project dans un tableau -->	
-		</h:form>
+		</div>
 	</div>
 
 </h:body>
