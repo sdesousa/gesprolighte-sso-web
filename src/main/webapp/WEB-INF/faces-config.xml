@@ -49,29 +49,4 @@
 			<to-view-id>/empList.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
-	<!-- Nav cases Project -->
-	<navigation-rule>
-		<from-view-id>/listProjects.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{ctrProjetBean.getProjectPhase}</from-action>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/listPhases.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-action>#{ctrProjetBean.addProject}</from-action>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/addProject.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/addProject.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{ctrProjetBean.saveProject}</from-action>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/listProjects.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
 </faces-config>
