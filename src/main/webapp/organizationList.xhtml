@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Gespro-Web</title>
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<script src="css/jquery.min.js" />
+	<script src="css/bootstrap.min.js" /> -->
+
+	<style type="text/css">
+	.btn-space {
+		margin-right: 5px;
+	}
+	</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  
+</h:head>
+
+<h:body>
+	<ui:include src="nav.xhtml"></ui:include>
+	<div class="container">
+
+		<h1>Bienvenue aux organisations travaillant avec la société INDYLI</h1>
+		<h:form>
+
+			<p class="col-md-12 bg-light text-right"><h:commandButton action="/registerOrg.xhtml?faces-redirect=true"
+				value="Ajouter"
+				styleClass="btn btn-success" /></p>
+
+			<h:dataTable value="#{ctrOrganizationBean.orgList}" var="org"
+				class="table table-striped table-hover table-bordered tableUpdated">
+				<h:column>
+					<!-- column header -->
+					<f:facet name="header">
+						<h:outputText value="#{msg.orgCode}" />
+					</f:facet>
+    				#{org.orgCode}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.orgName}" />
+					</f:facet>
+    				#{org.name}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.orgPhoneNumber}" />
+					</f:facet>
+    				#{org.phoneNumber}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.orgContactName}" />
+					</f:facet>
+    				#{org.contactName}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.orgContactEmail}" />
+					</f:facet>
+    				#{org.contactEmail}
+    			</h:column>
+    			<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.orgAdrWeb}" />
+					</f:facet>
+    				#{org.adrWeb}
+    			</h:column>
+    			
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.btn_tab}" />
+					</f:facet>
+					<h:commandButton value="#{msg.btn_update}"
+						action="#{ctrOrganizationBean.updateOrgById}"
+						styleClass="btn btn-primary btn-space">
+						<f:param name="orgId" value="#{org.id}" />
+					</h:commandButton>
+					<h:commandButton styleClass="btn btn-danger"
+						action="#{ctrOrganizationBean.deleteOrgById}"
+						value="#{msg.btn_delete}">
+						<f:param name="orgId" value="#{org.id}" />
+
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+
+		</h:form>
+	</div>
+</h:body>
+</html>

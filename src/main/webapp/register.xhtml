@@ -23,7 +23,6 @@
 					<h:outputText value="#{msg.register_form_msg}" />
 				</h4>
 
-
 				<h:outputText value="#{msg.register_file_number}" />
 				<h:inputText styleClass="form-control"
 					value="#{ctrEmployeeBean.empDataBean.fileNumber}" required="true"
@@ -31,20 +30,17 @@
 					requiredMessage="#{msg.register_filenumber_required}" />
 				<h:message for="fileNumber" style="color : red" />
 
-
 				<h:outputText value="#{msg.register_firstname}" />
 				<h:inputText styleClass="form-control"
 					value="#{ctrEmployeeBean.empDataBean.firstname}" required="true"
 					id="prenom" requiredMessage="#{msg.register_prenom_required}" />
 				<h:message for="prenom" style="color : red" />
 
-
 				<h:outputText value="#{msg.register_name}" />
 				<h:inputText styleClass="form-control"
 					value="#{ctrEmployeeBean.empDataBean.lastname}" required="true"
 					id="nom" />
 				<h:message for="nom" style="color : red" />
-
 
 				<h:outputText value="#{msg.register_mail}" />
 				<h:inputText styleClass="form-control"

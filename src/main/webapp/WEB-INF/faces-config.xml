@@ -81,4 +81,36 @@
 			<to-view-id>/projectManagerList.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+		<navigation-rule>
+		<!-- Routes pour organization -->
+		<from-view-id>/registerOrg.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrOrganizationBean.saveOrganization}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/organizationList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/updateOrg.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrOrganizationBean.updateOrganization}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/organizationList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/organizationList.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrOrganizationBean.updateOrgById}</from-action>
+			<to-view-id>/updateOrg.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{ctrOrganizationBean.deleteOrgById}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/organizationList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Formulaire de Creation des organisations</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<ui:include src="nav.xhtml"></ui:include>
+	<div class="container-fluid col-lg-6">
+		<h3>
+			<h:outputText value="#{msg.register_form_home}" />
+		</h3>
+		<div class="form-group">
+			<h:form>
+				<h4>
+					<h:outputText value="#{msg.register_form_msg}" />
+				</h4>
+
+				<h:outputText value="#{msg.orgCode}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrOrganizationBean.orgDataBean.orgCode}" required="true"
+					id="orgCode"
+					requiredMessage="#{msg.orgCode_required}" />
+				<h:message for="orgCode" style="color : red" />
+				
+				<h:outputText value="#{msg.orgName}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrOrganizationBean.orgDataBean.name}" required="true"
+					id="name"
+					requiredMessage="#{msg.orgName_required}" />
+				<h:message for="name" style="color : red" />
+				
+				<h:outputText value="#{msg.orgPhoneNumber}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrOrganizationBean.orgDataBean.phoneNumber}" required="true"
+					id="phoneNumber"
+					requiredMessage="#{msg.orgPhoneNumber_required}" />
+				<h:message for="phoneNumber" style="color : red" />
+
+				<h:outputText value="#{msg.orgContactName}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrOrganizationBean.orgDataBean.contactName}" required="true"
+					id="contactName"
+					requiredMessage="#{msg.orgContactName_required}" />
+				<h:message for="contactName" style="color : red" />
+				
+				<h:outputText value="#{msg.orgContactEmail}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrOrganizationBean.orgDataBean.contactEmail}" required="true"
+					validator="#{ctrOrganizationBean.validateEmail}"
+					id="contactEmail"
+					requiredMessage="#{msg.orgContactEmail_required}" />
+				<h:message for="contactEmail" style="color : red" />
+				
+				<h:outputText value="#{msg.orgAdrWeb}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrOrganizationBean.orgDataBean.adrWeb}" required="true"
+					id="adrweb"
+					requiredMessage="#{msg.orgAdrWeb_required}" />
+				<h:message for="contactAdrWeb" style="color : red" />
+
+				<br/>
+					<h:commandButton styleClass="btn btn-success"
+						value="#{msg.register_submit_button}"
+						action="#{ctrOrganizationBean.saveOrganization}" />
+				
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>
