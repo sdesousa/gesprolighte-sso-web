@@ -23,6 +23,10 @@ import af.cmr.indyli.gespro.light.business.service.impl.GpProjectServiceImpl;
 @RequestScoped
 public class GpProjectManagedBean implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private GpProject projectDataBean = new GpProject();
 	private GpOrganization organizationDataBean = new GpOrganization();
 	private IGpProjectService projetService = new GpProjectServiceImpl();

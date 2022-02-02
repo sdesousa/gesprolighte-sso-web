@@ -49,4 +49,36 @@
 			<to-view-id>/empList.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<!-- Routes pour chef de projet -->
+		<from-view-id>/registerPm.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjectManagerBean.saveEmployee}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/projectManagerList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/updatePm.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjectManagerBean.updateEmployee}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/projectManagerList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/projectManagerList.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjectManagerBean.updateEmpById}</from-action>
+			<to-view-id>/updatePm.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{ctrProjectManagerBean.deleteEmpById}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/projectManagerList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

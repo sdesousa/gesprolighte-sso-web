@@ -2,6 +2,8 @@ package af.cmr.indyli.gespro.light.trans.managedbean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -40,7 +42,13 @@ public class GpEmployeeManagedBean implements Serializable {
 
 	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
 		String eMail = (String) value;
-		if (eMail.indexOf("@") < 0) {
+//		if (eMail.indexOf("@") < 0) {
+//			FacesMessage message = new FacesMessage("Adresse Email invalide !");
+//			throw new ValidatorException(message);
+//		}
+		Pattern p = Pattern.compile("[\\w\\.-]*[a-zA-Z0-9_]@[\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]");
+		Matcher m = p.matcher(eMail);
+		if (!m.matches()) {
 			FacesMessage message = new FacesMessage("Adresse Email invalide !");
 			throw new ValidatorException(message);
 		}
