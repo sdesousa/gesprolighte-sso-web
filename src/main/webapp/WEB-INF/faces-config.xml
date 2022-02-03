@@ -20,7 +20,7 @@
 
 	<navigation-rule>
 		<!-- Routes pour employé -->
-		<from-view-id>/register.xhtml</from-view-id>
+		<from-view-id>/registerEmp.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{ctrEmployeeBean.saveEmployee}</from-action>
 			<from-outcome>success</from-outcome>
@@ -82,7 +82,7 @@
 		</navigation-case>
 	</navigation-rule>
 	
-		<navigation-rule>
+	<navigation-rule>
 		<!-- Routes pour organization -->
 		<from-view-id>/registerOrg.xhtml</from-view-id>
 		<navigation-case>
@@ -113,4 +113,45 @@
 			<to-view-id>/organizationList.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+		<navigation-rule>
+		<!-- Routes pour project -->
+		<from-view-id>/registerPrj.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjectBean.saveProject}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/projectList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/updatePrj.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjectBean.updateProject}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/projectList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/projectList.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrProjectBean.updatePrjById}</from-action>
+			<to-view-id>/updatePrj.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{ctrProjectBean.deletePrjById}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/projectList.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{ctrProjectBean.addProject}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/registerPrj.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<converter>
+	    <converter-id>organizationConverter</converter-id>
+	    <converter-class>af.cmr.indyli.gespro.light.trans.converter.GpOrganizationConverter</converter-class>
+	</converter>
 </faces-config>

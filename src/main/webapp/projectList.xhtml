@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head>
+	<title>Liste des projets</title>
+
+
+	<style type="text/css">
+.btn-space {
+	margin-right: 5px;
+}
+</style>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<ui:include src="nav.xhtml"></ui:include>
+	<div class="container">
+
+		<h1>Bienvenue aux projets de la société INDYLI</h1>
+		<h:form>
+
+			<p class="col-md-12 bg-light text-right"><h:commandButton action="#{ctrProjectBean.addProject}"
+				value="Ajouter"
+				styleClass="btn btn-success" /></p>
+
+			<h:dataTable value="#{ctrProjectBean.prjList}" var="prj"
+				class="table table-striped table-hover table-bordered tableUpdated">
+				<h:column>
+					<!-- column header -->
+					<f:facet name="header">
+						<h:outputText value="#{msg.prjCode}" />
+					</f:facet>
+    				#{prj.projectCode}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.prjName}" />
+					</f:facet>
+    				#{prj.name}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.prjDescription}" />
+					</f:facet>
+    				#{prj.description}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.prjStartDate}" />
+					</f:facet>
+    				#{prj.startDate}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.prjEndDate}" />
+					</f:facet>
+    				#{prj.endDate}
+    			</h:column>
+    			<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.prjAmount}" />
+					</f:facet>
+    				#{prj.amount}
+    			</h:column>
+    			<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.prjOrg}" />
+					</f:facet>
+    				#{prj.gpOrganization.orgCode}
+    			</h:column>
+    			<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.prjPm}" />
+					</f:facet>
+    				#{prj.gpChefProjet.fileNumber}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.btn_tab}" />
+					</f:facet>
+					<h:commandButton value="#{msg.btn_update}"
+						action="#{ctrProjectBean.updatePrjById}"
+						styleClass="btn btn-primary btn-space">
+						<f:param name="prjId" value="#{prj.id}" />
+					</h:commandButton>
+					<h:commandButton styleClass="btn btn-danger"
+						action="#{ctrProjectBean.deletePrjById}"
+						value="#{msg.btn_delete}">
+						<f:param name="prjId" value="#{prj.id}" />
+
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+
+		</h:form>
+	</div>
+
+</h:body>
+
+</html>

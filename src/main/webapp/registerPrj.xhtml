@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Formulaire de Creation des chefs de projet</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<ui:include src="nav.xhtml"></ui:include>
+	<div class="container-fluid col-lg-6">
+		<h3>
+			<h:outputText value="#{msg.register_form_home}" />
+		</h3>
+		<div class="form-group">
+			<h:form>
+				<h4>
+					<h:outputText value="#{msg.register_form_msg}" />
+				</h4>
+
+				<h:outputText value="#{msg.prjCode}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrProjectBean.prjDataBean.projectCode}" required="true"
+					id="projectCode"
+					requiredMessage="#{msg.prjCode_required}" />
+				<h:message for="projectCode" style="color : red" />
+				
+				<h:outputText value="#{msg.prjName}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrProjectBean.prjDataBean.name}" required="true"
+					id="nom"
+					requiredMessage="#{msg.prjName_required}" />
+				<h:message for="nom" style="color : red" />
+
+				<h:outputText value="#{msg.prjDescription}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrProjectBean.prjDataBean.description}" required="true"
+					id="description"
+					requiredMessage="#{msg.prjDescription_required}" />
+				<h:message for="description" />
+
+				<h:outputText value="#{msg.prjStartDate}" />
+				<p:datePicker styleClass="form-control"
+					value="#{ctrProjectBean.prjDataBean.startDate}" required="true"
+					id="startDate"
+					requiredMessage="#{msg.prjStartDate_required}" />
+				<h:message for="startDate" />
+
+				<h:outputText value="#{msg.prjEndDate}" />
+				<p:datePicker styleClass="form-control"
+					value="#{ctrProjectBean.prjDataBean.endDate}" required="true"
+					id="endDate"
+					requiredMessage="#{msg.prjEndDate_required}" />
+				<h:message for="endDate" />
+
+				<h:outputText value="#{msg.prjAmount}" />
+				<h:inputText styleClass="form-control"
+					value="#{ctrProjectBean.prjDataBean.amount}" required="true"
+					id="amount"
+					requiredMessage="#{msg.prjAmount_required}" />
+				<h:message for="amount" />
+				
+				<h:outputText value="#{msg.prjOrg}" />
+				<h:selectOneMenu styleClass="form-control"
+					value="#{ctrProjectBean.orgId}" required="true"
+					id="organization">
+					<f:selectItems value="#{ctrProjectBean.organizations}" 
+						var="org" 
+						itemValue="#{org.id}"
+						itemLabel="#{org.name}" /> 
+				</h:selectOneMenu>
+				<h:message for="organization" />
+				
+				<h:outputText value="#{msg.prjPm}" />
+				<h:selectOneMenu styleClass="form-control"
+					value="#{ctrProjectBean.pmId}" required="true"
+					id="projectManager">
+					<f:selectItems value="#{ctrProjectBean.projectManagers}" 
+						var="pm" 
+						itemValue="#{pm.id}"
+						itemLabel="#{pm.fullname}" /> 
+				</h:selectOneMenu>
+				<h:message for="projectManager" />
+
+				<br/>
+					<h:commandButton styleClass="btn btn-success"
+						value="#{msg.register_submit_button}"
+						action="#{ctrProjectBean.saveProject}" />
+				
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

@@ -1,6 +1,7 @@
 package af.cmr.indyli.gespro.light.trans.managedbean;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -8,18 +9,18 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import af.cmr.indyli.gespro.light.business.entity.GpOrganization;
-import af.cmr.indyli.gespro.light.business.entity.GpPhase;
+//import af.cmr.indyli.gespro.light.business.entity.GpPhase;
 import af.cmr.indyli.gespro.light.business.entity.GpProject;
 import af.cmr.indyli.gespro.light.business.entity.GpProjectManager;
 import af.cmr.indyli.gespro.light.business.exception.GesproBusinessException;
-import af.cmr.indyli.gespro.light.business.service.IGpPhaseService;
+//import af.cmr.indyli.gespro.light.business.service.IGpPhaseService;
 import af.cmr.indyli.gespro.light.business.service.IGpProjectService;
 import af.cmr.indyli.gespro.light.business.service.impl.GpOrganizationServiceImpl;
-import af.cmr.indyli.gespro.light.business.service.impl.GpPhaseServiceImpl;
+//import af.cmr.indyli.gespro.light.business.service.impl.GpPhaseServiceImpl;
 import af.cmr.indyli.gespro.light.business.service.impl.GpProjectManagerServiceImpl;
 import af.cmr.indyli.gespro.light.business.service.impl.GpProjectServiceImpl;
 
-@ManagedBean(name = "ctrProjetBean")
+@ManagedBean(name = "ctrProjectBean")
 @RequestScoped
 public class GpProjectManagedBean implements Serializable {
 
@@ -27,57 +28,110 @@ public class GpProjectManagedBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private GpProject projectDataBean = new GpProject();
-	private GpOrganization organizationDataBean = new GpOrganization();
-	private IGpProjectService projetService = new GpProjectServiceImpl();
-	private IGpPhaseService phaseService = new GpPhaseServiceImpl();
+	private GpProject prjDataBean = new GpProject();
+	private IGpProjectService<GpProject> prjService = new GpProjectServiceImpl();
 	private GpProjectManagerServiceImpl empService = new GpProjectManagerServiceImpl();
 	private GpOrganizationServiceImpl orgService = new GpOrganizationServiceImpl();
 
-	private List<GpProject> projectList = null;
-	private List<GpPhase> phaseList = null;
+	private List<GpProject> prjList = null;
 	private List<GpOrganization> organizations;
 	private List<GpProjectManager> projectManagers;
-	private GpOrganization org;
-	private String idOrg;
-	private String idEmp;
+	private Integer orgId;
+	private Integer pmId;
 
 	public GpProjectManagedBean() {
-		// TODO : recuperez liste tous les projets
+		this.prjList = this.prjService.findAll();
 	}
 
+	
+	// TODO erreur dans selectMenu
 	public String saveProject() throws GesproBusinessException {
-		// TODO : appellez le service de creation de projects
-		// TODO : recuperez la nouvelle liste des projets
-
+		prjDataBean.setCreationDate(new Date());
+		prjDataBean.setGpOrganization(orgService.findById(orgId));
+		prjDataBean.setGpChefProjet(empService.findById(pmId));
+		this.prjService.create(this.prjDataBean);
+		this.prjList = this.prjService.findAll();
 		return "success";
 	}
 
 	public String addProject() {
-
 		this.organizations = this.orgService.findAll();
 		this.projectManagers = this.empService.findAll();
-
 		return "success";
 	}
 
-	public String updateProject() {
-		return "succcess";
-	}
-
-	public String getProjectPhase() {
-		String projectId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-
-		// TODO : Récupérer Un project à partir de la valeur entière de la chaîne de
-		// caractères projectId
-
+	public String updateProject() throws GesproBusinessException {
+		this.prjService.update(this.prjDataBean);
+		this.prjList = this.prjService.findAll();
 		return "success";
 	}
 
-	public String update() {
+	public String updatePrjById() {
+		String editPrjId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("prjId");
+		this.prjDataBean = this.prjService.findById(Integer.valueOf(editPrjId));
 		return "success";
 	}
+	
+	// TODO
+	public String deletePrjById() {
+		return "success";
+	}
+	
+//	public String getProjectPhase() {
+//		String projectId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+//		// TODO : Récupérer Un project à partir de la valeur entière de la chaîne de
+//		// caractères projectId
+//		return "success";
+//	}
 
-	// TODO : Génère les getter et les setter
+	public GpProject getPrjDataBean() {
+		return prjDataBean;
+	}
+
+	public void setPrjDataBean(GpProject prjDataBean) {
+		this.prjDataBean = prjDataBean;
+	}
+
+	public List<GpProject> getPrjList() {
+		return prjList;
+	}
+
+	public void setPrjList(List<GpProject> prjList) {
+		this.prjList = prjList;
+	}
+
+	public List<GpOrganization> getOrganizations() {
+		return organizations;
+	}
+
+	public void setOrganizations(List<GpOrganization> organizations) {
+		this.organizations = organizations;
+	}
+
+	public List<GpProjectManager> getProjectManagers() {
+		return projectManagers;
+	}
+
+	public void setProjectManagers(List<GpProjectManager> projectManagers) {
+		this.projectManagers = projectManagers;
+	}
+
+	public Integer getOrgId() {
+		return orgId;
+	}
+
+	public void setOrgId(Integer orgId) {
+		this.orgId = orgId;
+	}
+
+	public Integer getPmId() {
+		return pmId;
+	}
+
+	public void setPmId(Integer pmId) {
+		this.pmId = pmId;
+	}
+	
+	
 
 }
