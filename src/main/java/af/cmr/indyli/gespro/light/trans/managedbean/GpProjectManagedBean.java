@@ -47,7 +47,6 @@ public class GpProjectManagedBean implements Serializable {
 
 	
 	public String saveProject() throws GesproBusinessException {
-		prjDataBean.setCreationDate(new Date());
 		prjDataBean.setGpOrganization(orgService.findById(orgId));
 		prjDataBean.setGpChefProjet(empService.findById(pmId));
 		this.prjService.create(this.prjDataBean);
