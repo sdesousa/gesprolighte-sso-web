@@ -3,9 +3,10 @@ package af.cmr.indyli.gespro.light.trans.managedbean;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import af.cmr.indyli.gespro.light.business.entity.GpOrganization;
@@ -21,7 +22,7 @@ import af.cmr.indyli.gespro.light.business.service.impl.GpProjectManagerServiceI
 import af.cmr.indyli.gespro.light.business.service.impl.GpProjectServiceImpl;
 
 @ManagedBean(name = "ctrProjectBean")
-@RequestScoped
+@SessionScoped
 public class GpProjectManagedBean implements Serializable {
 
 	/**
@@ -38,13 +39,13 @@ public class GpProjectManagedBean implements Serializable {
 	private List<GpProjectManager> projectManagers;
 	private Integer orgId;
 	private Integer pmId;
+	private TimeZone tz = TimeZone.getDefault();
 
 	public GpProjectManagedBean() {
 		this.prjList = this.prjService.findAll();
 	}
 
 	
-	// TODO erreur dans selectMenu
 	public String saveProject() throws GesproBusinessException {
 		prjDataBean.setCreationDate(new Date());
 		prjDataBean.setGpOrganization(orgService.findById(orgId));
@@ -69,11 +70,16 @@ public class GpProjectManagedBean implements Serializable {
 	public String updatePrjById() {
 		String editPrjId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("prjId");
 		this.prjDataBean = this.prjService.findById(Integer.valueOf(editPrjId));
+		this.organizations = this.orgService.findAll();
+		this.projectManagers = this.empService.findAll();
 		return "success";
 	}
 	
 	// TODO
 	public String deletePrjById() {
+		String delPrjId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("prjId");
+		this.prjService.deleteById(Integer.valueOf(delPrjId));
+		this.prjList = this.prjService.findAll();
 		return "success";
 	}
 	
@@ -131,7 +137,13 @@ public class GpProjectManagedBean implements Serializable {
 	public void setPmId(Integer pmId) {
 		this.pmId = pmId;
 	}
-	
-	
 
+	public TimeZone getTz() {
+		return tz;
+	}
+
+	public void setTz(TimeZone tz) {
+		this.tz = tz;
+	}
+	
 }

@@ -11,6 +11,7 @@
 <h:head>
 	<title>Formulaire de Creation des chefs de projet</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/esic.css" />
 </h:head>
 <h:body>
 	<ui:include src="nav.xhtml"></ui:include>
@@ -49,7 +50,9 @@
 				<p:datePicker styleClass="form-control"
 					value="#{ctrProjectBean.prjDataBean.startDate}" required="true"
 					id="startDate"
-					requiredMessage="#{msg.prjStartDate_required}" />
+					timeZone="Europe/Paris"
+					requiredMessage="#{msg.prjStartDate_required}" >
+					</p:datePicker>
 				<h:message for="startDate" />
 
 				<h:outputText value="#{msg.prjEndDate}" />
