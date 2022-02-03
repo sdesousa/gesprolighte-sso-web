@@ -1,9 +1,7 @@
 package af.cmr.indyli.gespro.light.trans.managedbean;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -39,7 +37,6 @@ public class GpProjectManagedBean implements Serializable {
 	private List<GpProjectManager> projectManagers;
 	private Integer orgId;
 	private Integer pmId;
-	private TimeZone tz = TimeZone.getDefault();
 
 	public GpProjectManagedBean() {
 		this.prjList = this.prjService.findAll();
@@ -74,7 +71,6 @@ public class GpProjectManagedBean implements Serializable {
 		return "success";
 	}
 	
-	// TODO
 	public String deletePrjById() {
 		String delPrjId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("prjId");
 		this.prjService.deleteById(Integer.valueOf(delPrjId));
@@ -135,14 +131,6 @@ public class GpProjectManagedBean implements Serializable {
 
 	public void setPmId(Integer pmId) {
 		this.pmId = pmId;
-	}
-
-	public TimeZone getTz() {
-		return tz;
-	}
-
-	public void setTz(TimeZone tz) {
-		this.tz = tz;
 	}
 	
 }
