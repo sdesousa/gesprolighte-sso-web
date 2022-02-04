@@ -150,8 +150,41 @@
 			<to-view-id>/registerPrj.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	<converter>
-	    <converter-id>organizationConverter</converter-id>
-	    <converter-class>af.cmr.indyli.gespro.light.trans.converter.GpOrganizationConverter</converter-class>
-	</converter>
+	
+		<navigation-rule>
+		<!-- Routes pour phase -->
+		<from-view-id>/registerPhs.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrPhaseBean.savePhase}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/phaseList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/updatePhs.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrPhaseBean.updatePhase}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/phaseList.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/phaseList.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{ctrPhaseBean.updatePhsById}</from-action>
+			<to-view-id>/updatePhs.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{ctrPhaseBean.deletePhsById}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/phaseList.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{ctrPhaseBean.addPhase}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/registerPhs.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
 </faces-config>

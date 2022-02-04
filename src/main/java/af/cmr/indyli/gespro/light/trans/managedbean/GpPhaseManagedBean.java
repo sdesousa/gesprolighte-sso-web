@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 
 import af.cmr.indyli.gespro.light.business.entity.GpPhase;
 import af.cmr.indyli.gespro.light.business.entity.GpProject;
+import af.cmr.indyli.gespro.light.business.exception.GesproBusinessException;
 import af.cmr.indyli.gespro.light.business.service.IGpPhaseService;
 import af.cmr.indyli.gespro.light.business.service.IGpProjectService;
 import af.cmr.indyli.gespro.light.business.service.impl.GpPhaseServiceImpl;
@@ -35,30 +36,27 @@ public class GpPhaseManagedBean implements Serializable {
 
 	// TODO
 	public String savePhase() throws GesproBusinessException {
-		prjDataBean.setGpOrganization(orgService.findById(orgId));
-		prjDataBean.setGpChefProjet(empService.findById(pmId));
-		this.prjService.create(this.prjDataBean);
-		this.prjList = this.prjService.findAll();
+		phsDataBean.setGpProject(prjService.findById(prjId));
+		this.phsService.create(this.phsDataBean);
+		this.phsList = this.phsService.findAll();
 		return "success";
 	}
 	// TODO
 	public String addPhase() {
-		this.organizations = this.orgService.findAll();
-		this.projectManagers = this.empService.findAll();
+		this.projects = this.prjService.findAll();
 		return "success";
 	}
 	// TODO
 	public String updatePhase() throws GesproBusinessException {
-		this.prjService.update(this.prjDataBean);
-		this.prjList = this.prjService.findAll();
+		this.phsService.update(this.phsDataBean);
+		this.phsList = this.phsService.findAll();
 		return "success";
 	}
 	// TODO
 	public String updatePhsById() {
-		String editPrjId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("prjId");
-		this.prjDataBean = this.prjService.findById(Integer.valueOf(editPrjId));
-		this.organizations = this.orgService.findAll();
-		this.projectManagers = this.empService.findAll();
+		String editPhsId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("phsId");
+		this.phsDataBean = this.phsService.findById(Integer.valueOf(editPhsId));
+		this.projects = this.prjService.findAll();
 		return "success";
 	}
 	// TODO

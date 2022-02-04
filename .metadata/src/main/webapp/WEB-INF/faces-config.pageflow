@@ -12,9 +12,12 @@
   <nodes xsi:type="pageflow:PFPage" name="organizationList.xhtml" id="pf16437972417629" referenceLink="//@navigationRule.11/@navigationCase.1/@toViewId|" outlinks="pf164380846011615 pf164380846011616" inlinks="pf16437972417628 pf164379724176210 pf164380846011616" path="/organizationList.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="updateOrg.xhtml" id="pf164379724176212" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" outlinks="pf164379724176210" inlinks="pf164380846011615" path="/updateOrg.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="registerEmp.xhtml" id="pf164380999799118" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf164380999799117" path="/registerEmp.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="registerPrj.xhtml" id="pf164381024625022" referenceLink="//@navigationRule.11/@navigationCase.2/@toViewId|" outlinks="pf164381024625023" inlinks="pf164381468998031" path="/registerPrj.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="projectList.xhtml" id="pf164381024625024" referenceLink="//@navigationRule.11/@fromViewId|" outlinks="pf164381042018327 pf164381042018328 pf164381468998031" inlinks="pf164381024625023 pf164381042018329 pf164381042018328" path="/projectList.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="updatePrj.xhtml" id="pf164381042018330" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" outlinks="pf164381042018329" inlinks="pf164381042018327" path="/updatePrj.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registerPrj.xhtml" id="pf164381024625022" referenceLink="//@navigationRule.14/@navigationCase.2/@toViewId|" outlinks="pf164381024625023" inlinks="pf164381468998031" path="/registerPrj.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="projectList.xhtml" id="pf164381024625024" referenceLink="//@navigationRule.14/@navigationCase.1/@toViewId|" outlinks="pf164381042018327 pf164381042018328 pf164381468998031" inlinks="pf164381024625023 pf164381042018329 pf164381042018328" path="/projectList.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="updatePrj.xhtml" id="pf164381042018330" referenceLink="//@navigationRule.14/@navigationCase.0/@toViewId|" outlinks="pf164381042018329" inlinks="pf164381042018327" path="/updatePrj.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registerPhs.xhtml" id="pf164396284678632" referenceLink="//@navigationRule.14/@navigationCase.2/@toViewId|" outlinks="pf164396284678633" inlinks="pf164396284678634" path="/registerPhs.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="phaseList.xhtml" id="pf164396284678635" referenceLink="//@navigationRule.14/@fromViewId|" outlinks="pf164396284678636 pf164396284678637 pf164396284678634" inlinks="pf164396284678633 pf164396284678638 pf164396284678637" path="/phaseList.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="updatePhs.xhtml" id="pf164396284678639" referenceLink="//@navigationRule.14/@navigationCase.0/@toViewId|" outlinks="pf164396284678638" inlinks="pf164396284678636" path="/updatePhs.xhtml"/>
   <links id="pf164303831249725" target="pf16430362400249" source="pf164303831249726" outcome="success" fromaction="#{ctrEmployeeBean.updateEmployee}"/>
   <links id="pf16431071926980" target="pf164303831249726" source="pf16430362400249" fromaction="#{ctrEmployeeBean.updateEmpById}"/>
   <links id="pf16433570138742" target="pf16430362400249" source="pf16430362400249" outcome="success" fromaction="#{ctrEmployeeBean.deleteEmpById}">
@@ -36,4 +39,9 @@
   <links id="pf164381042018327" target="pf164381042018330" source="pf164381024625024" fromaction="#{ctrProjectBean.updatePrjById}"/>
   <links id="pf164381042018328" target="pf164381024625024" source="pf164381024625024" outcome="success" fromaction="#{ctrProjectBean.deletePrjById}"/>
   <links id="pf164381468998031" target="pf164381024625022" source="pf164381024625024" outcome="success" fromaction="#{ctrProjectBean.addProject}"/>
+  <links id="pf164396284678633" target="pf164396284678635" source="pf164396284678632" outcome="success" fromaction="#{ctrPhaseBean.savePhase}"/>
+  <links id="pf164396284678638" target="pf164396284678635" source="pf164396284678639" outcome="success" fromaction="#{ctrPhaseBean.updatePhase}"/>
+  <links id="pf164396284678636" target="pf164396284678639" source="pf164396284678635" fromaction="#{ctrPhaseBean.updatePhsById}"/>
+  <links id="pf164396284678637" target="pf164396284678635" source="pf164396284678635" outcome="success" fromaction="#{ctrPhaseBean.deletePhsById}"/>
+  <links id="pf164396284678634" target="pf164396284678632" source="pf164396284678635" outcome="success" fromaction="#{ctrPhaseBean.addPhase}"/>
 </pageflow:Pageflow>
