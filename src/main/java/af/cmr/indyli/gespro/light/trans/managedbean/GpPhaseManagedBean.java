@@ -34,37 +34,64 @@ public class GpPhaseManagedBean implements Serializable {
 		this.phsList = this.phsService.findAll();
 	}
 
-	// TODO
 	public String savePhase() throws GesproBusinessException {
 		phsDataBean.setGpProject(prjService.findById(prjId));
 		this.phsService.create(this.phsDataBean);
 		this.phsList = this.phsService.findAll();
 		return "success";
 	}
-	// TODO
 	public String addPhase() {
 		this.projects = this.prjService.findAll();
 		return "success";
 	}
-	// TODO
 	public String updatePhase() throws GesproBusinessException {
 		this.phsService.update(this.phsDataBean);
 		this.phsList = this.phsService.findAll();
 		return "success";
 	}
-	// TODO
 	public String updatePhsById() {
 		String editPhsId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("phsId");
 		this.phsDataBean = this.phsService.findById(Integer.valueOf(editPhsId));
 		this.projects = this.prjService.findAll();
 		return "success";
 	}
-	// TODO
 	public String deletePhsById() {
 		String delPhsId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("phsId");
 		this.phsService.deleteById(Integer.valueOf(delPhsId));
 		this.phsList = this.phsService.findAll();
 		return "success";
+	}
+
+	public GpPhase getPhsDataBean() {
+		return phsDataBean;
+	}
+
+	public void setPhsDataBean(GpPhase phsDataBean) {
+		this.phsDataBean = phsDataBean;
+	}
+
+	public List<GpPhase> getPhsList() {
+		return phsList;
+	}
+
+	public void setPhsList(List<GpPhase> phsList) {
+		this.phsList = phsList;
+	}
+
+	public List<GpProject> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<GpProject> projects) {
+		this.projects = projects;
+	}
+
+	public Integer getPrjId() {
+		return prjId;
+	}
+
+	public void setPrjId(Integer prjId) {
+		this.prjId = prjId;
 	}
 
 }
