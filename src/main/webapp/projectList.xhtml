@@ -74,13 +74,13 @@
 					<f:facet name="header">
 						<h:outputText value="#{msg.prjOrg}" />
 					</f:facet>
-    				#{prj.gpOrganization.orgCode} - #{prj.gpOrganization.name}
+    				#{prj.gpOrganization.orgCode}: #{prj.gpOrganization.name}
     			</h:column>
     			<h:column>
 					<f:facet name="header">
 						<h:outputText value="#{msg.prjPm}" />
 					</f:facet>
-    				#{prj.gpChefProjet.fullname}
+    				#{prj.gpChefProjet.fileNumber}: #{prj.gpChefProjet.fullname}
     			</h:column>
 				<h:column>
 					<f:facet name="header">

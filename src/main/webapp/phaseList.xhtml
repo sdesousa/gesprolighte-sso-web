@@ -71,19 +71,19 @@
 					<f:facet name="header">
 						<h:outputText value="#{msg.phsStatus}" />
 					</f:facet>
-    				#{phs.status}
+    				#{phs.status == 1 ? msg.yes : msg.no}
     			</h:column>
     			<h:column>
 					<f:facet name="header">
 						<h:outputText value="#{msg.phsIsEnded}" />
 					</f:facet>
-    				#{phs.isEnded}
+    				#{phs.isEnded == 1 ? msg.yes : msg.no}
     			</h:column>
     			<h:column>
 					<f:facet name="header">
 						<h:outputText value="#{msg.phsProject}" />
 					</f:facet>
-    				#{phs.gpProject.name}
+    				#{phs.gpProject.projectCode}: #{phs.gpProject.name}
     			</h:column>
     			
 				<h:column>
@@ -96,7 +96,7 @@
 						<f:param name="phsId" value="#{phs.id}" />
 					</h:commandButton>
 					<h:commandButton styleClass="btn btn-danger"
-						action="#{ctrPhsBean.deletePhsById}"
+						action="#{ctrPhaseBean.deletePhsById}"
 						value="#{msg.btn_delete}">
 						<f:param name="phsId" value="#{phs.id}" />
 
