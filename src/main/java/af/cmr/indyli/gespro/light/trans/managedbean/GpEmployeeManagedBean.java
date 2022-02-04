@@ -13,9 +13,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import af.cmr.indyli.gespro.light.business.entity.GpEmployee;
+import af.cmr.indyli.gespro.light.business.entity.GpProjectManager;
 import af.cmr.indyli.gespro.light.business.exception.GesproBusinessException;
 import af.cmr.indyli.gespro.light.business.service.IGpEmployeeService;
 import af.cmr.indyli.gespro.light.business.service.impl.GpEmployeeServiceImpl;
+import af.cmr.indyli.gespro.light.business.service.impl.GpProjectManagerServiceImpl;
 
 @ManagedBean(name = "ctrEmployeeBean")
 @RequestScoped
@@ -26,17 +28,31 @@ public class GpEmployeeManagedBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private GpEmployee empDataBean = new GpEmployee();
+	private GpProjectManagerServiceImpl pmServive = new GpProjectManagerServiceImpl();
 	private IGpEmployeeService<GpEmployee> empService = new GpEmployeeServiceImpl();
 
 	private List<GpEmployee> empList = null;
+	private boolean isPM = false;
 
 	public GpEmployeeManagedBean() {
 		this.empList = this.empService.findAll();
 	}
 
 	public String saveEmployee() throws GesproBusinessException {
-		this.empService.create(this.empDataBean);
+		if(isPM) {
+			GpProjectManager pm = new GpProjectManager(this.empDataBean);
+			this.pmServive.create(pm);
+		} else {
+			this.empService.create(this.empDataBean);
+		}
 		this.empList = this.empService.findAll();
+		return "success";
+	}
+	
+	public String promoteEmpById() {
+		String editEmpId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("empId");
+		this.empDataBean = this.empService.findById(Integer.valueOf(editEmpId));
+		this.pmServive.promoteToProjectManager(empDataBean);
 		return "success";
 	}
 
@@ -87,5 +103,13 @@ public class GpEmployeeManagedBean implements Serializable {
 
 	public void setEmpList(List<GpEmployee> empList) {
 		this.empList = empList;
+	}
+
+	public boolean getIsPM() {
+		return isPM;
+	}
+
+	public void setIsPM(boolean isPM) {
+		this.isPM = isPM;
 	}
 }

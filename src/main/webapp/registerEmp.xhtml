@@ -10,10 +10,11 @@
 <h:head>
 	<title>Formulaire de Creation des employes</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/esic.css" />
 </h:head>
 <h:body>
 	<ui:include src="nav.xhtml"></ui:include>
-	<div class="container-fluid col-lg-6">
+	<div class="container-fluid col-lg-6 col-lg-offset-3">
 		<h3>
 			<h:outputText value="#{msg.register_form_home}" />
 		</h3>
@@ -69,6 +70,11 @@
 					id="phoneNumber" />
 				<h:message for="phoneNumber" />
 
+				<h:outputText value="#{msg.register_is_project_manager}"/>
+				<h:selectBooleanCheckbox styleClass="checkPm"
+					value="#{ctrEmployeeBean.isPM}"
+					id="isPM" />
+				<h:message for="isPM" />
 
 				<br/>
 					<h:commandButton styleClass="btn btn-success"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16430181979440" configfile="/gesprolighte-sso-web/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="empList.xhtml" x="338" y="562" id="pf16430362400249" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" outlinks="pf16431071926980 pf16433570138742" inlinks="pf164303831249725 pf16433570138742 pf164380999799117" path="/empList.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="empList.xhtml" x="338" y="562" id="pf16430362400249" referenceLink="//@navigationRule.2/@navigationCase.2/@toViewId|" outlinks="pf16431071926980 pf16433570138742 pf164398593913440" inlinks="pf164303831249725 pf16433570138742 pf164380999799117 pf164398593913440" path="/empList.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="updateEmp.xhtml" x="122" y="562" id="pf164303831249726" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf164303831249725" inlinks="pf16431071926980" path="/updateEmp.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="listProjects.xhtml" x="122" y="946" id="pf164303834875637" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" path="/listProjects.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="listPhases.xhtml" x="122" y="1330" id="pf16433570138744" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" path="/listPhases.xhtml"/>
@@ -44,4 +44,5 @@
   <links id="pf164396284678636" target="pf164396284678639" source="pf164396284678635" fromaction="#{ctrPhaseBean.updatePhsById}"/>
   <links id="pf164396284678637" target="pf164396284678635" source="pf164396284678635" outcome="success" fromaction="#{ctrPhaseBean.deletePhsById}"/>
   <links id="pf164396284678634" target="pf164396284678632" source="pf164396284678635" outcome="success" fromaction="#{ctrPhaseBean.addPhase}"/>
+  <links id="pf164398593913440" target="pf16430362400249" source="pf16430362400249" outcome="success" fromaction="#{ctrEmployeeBean.promoteEmpById}"/>
 </pageflow:Pageflow>

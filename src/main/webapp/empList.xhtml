@@ -29,7 +29,7 @@
 		<h1>Bienvenue aux employés de la société INDYLI</h1>
 		<h:form>
 
-			<p class="col-md-12 bg-light text-right"><h:commandButton action="/register.xhtml?faces-redirect=true"
+			<p class="col-md-12 bg-light text-right"><h:commandButton action="/registerEmp.xhtml?faces-redirect=true"
 				value="Ajouter"
 				styleClass="btn btn-success" /></p>
 
@@ -82,11 +82,15 @@
 						styleClass="btn btn-primary btn-space">
 						<f:param name="empId" value="#{pers.id}" />
 					</h:commandButton>
+					<h:commandButton value="#{msg.btn_promote}" 
+						action="#{ctrEmployeeBean.promoteEmpById}"
+						styleClass="btn btn-info btn-space">
+						<f:param name="empId" value="#{pers.id}" />
+					</h:commandButton>
 					<h:commandButton styleClass="btn btn-danger"
 						action="#{ctrEmployeeBean.deleteEmpById}"
 						value="#{msg.btn_delete}">
 						<f:param name="empId" value="#{pers.id}" />
-
 					</h:commandButton>
 				</h:column>
 
