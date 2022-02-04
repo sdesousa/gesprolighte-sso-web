@@ -25,3 +25,12 @@
 	width:100%;
 	height:100%;
 }
+
+.radioStatus tbody tr td input {
+	margin-right: 10px;
+}
+
+.radioStatus tbody tr td label {
+	margin-right: 20px;
+	font-weight: normal;
+}
