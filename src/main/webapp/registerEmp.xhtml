@@ -37,7 +37,8 @@
 					<h:outputText value="#{msg.register_firstname}" />
 					<h:inputText styleClass="form-control"
 						value="#{ctrEmployeeBean.empDataBean.firstname}" required="true"
-						id="prenom" requiredMessage="#{msg.register_prenom_required}" />
+						id="prenom"
+						requiredMessage="#{msg.register_firstname_required}" />
 				</div>
 				<h:message for="prenom" style="color : red" />
 
@@ -45,7 +46,8 @@
 					<h:outputText value="#{msg.register_name}" />
 					<h:inputText styleClass="form-control"
 						value="#{ctrEmployeeBean.empDataBean.lastname}" required="true"
-						id="nom" />
+						id="nom"
+						requiredMessage="#{msg.register_name_required}" />
 				</div>
 				<h:message for="nom" style="color : red" />
 
@@ -53,34 +55,35 @@
 					<h:outputText value="#{msg.register_mail}" />
 					<h:inputText styleClass="form-control"
 						value="#{ctrEmployeeBean.empDataBean.email}" required="true"
+						requiredMessage="#{msg.register_mail_required}"
 						validator="#{ctrEmployeeBean.validateEmail}" id="email" />
 				</div>
 				<h:message for="email" style="color : red" />
-
 
 				<div>
 					<h:outputText value="#{msg.register_login}" />
 					<h:inputText styleClass="form-control"
 						value="#{ctrEmployeeBean.empDataBean.login}" required="true"
-						id="login" />
+						id="login"
+						requiredMessage="#{msg.register_login_required}" />
 				</div>
 				<h:message for="login" style="color : red" />
-
 
 				<div>
 					<h:outputText value="#{msg.register_password}" />
 					<h:inputText styleClass="form-control"
 						value="#{ctrEmployeeBean.empDataBean.password}" required="true"
-						id="password" type="password" />
+						id="password" type="password"
+						requiredMessage="#{msg.register_password_required}" />
 				</div>
 				<h:message for="password" style="color : red" />
-
 
 				<div>
 					<h:outputText value="#{msg.register_phone_number}" />
 					<h:inputText styleClass="form-control"
 						value="#{ctrEmployeeBean.empDataBean.phoneNumber}" required="true"
-						id="phoneNumber" />
+						id="phoneNumber"
+						requiredMessage="#{msg.register_phone_number_required}" />
 				</div>
 				<h:message for="phoneNumber" style="color : red" />
 

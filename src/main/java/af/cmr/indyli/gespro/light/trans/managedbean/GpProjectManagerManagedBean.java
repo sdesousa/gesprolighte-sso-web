@@ -29,23 +29,28 @@ public class GpProjectManagerManagedBean implements Serializable {
 	private IGpProjectManagerService pmService = new GpProjectManagerServiceImpl();
 
 	private List<GpProjectManager> pmList = null;
+	private UIComponent saveButton;
 
 	public GpProjectManagerManagedBean() {
 		this.pmList = this.pmService.findAll();
 	}
 
 	public String saveEmployee() throws GesproBusinessException {
-		this.pmService.create(this.pmDataBean);
-		this.pmList = this.pmService.findAll();
-		return "success";
+		try {
+			this.pmService.create(this.pmDataBean);
+			this.pmList = this.pmService.findAll();
+			return "success";
+		} catch (GesproBusinessException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(saveButton.getClientId(context), msg);
+			e.printStackTrace();
+		}
+		return "fail";
 	}
 
 	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
 		String eMail = (String) value;
-//		if (eMail.indexOf("@") < 0) {
-//			FacesMessage message = new FacesMessage("Adresse Email invalide !");
-//			throw new ValidatorException(message);
-//		}
 		Pattern p = Pattern.compile("[\\w\\.-]*[a-zA-Z0-9_]@[\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]");
 		Matcher m = p.matcher(eMail);
 		if (!m.matches()) {
@@ -61,9 +66,17 @@ public class GpProjectManagerManagedBean implements Serializable {
 	}
 
 	public String updateEmployee() throws GesproBusinessException {
-		this.pmService.update(this.pmDataBean);
-		this.pmList = this.pmService.findAll();
-		return "success";
+		try {
+			this.pmService.update(this.pmDataBean);
+			this.pmList = this.pmService.findAll();
+			return "success";
+		} catch (GesproBusinessException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(saveButton.getClientId(context), msg);
+			e.printStackTrace();
+		}
+		return "fail";
 	}
 
 	public String deleteEmpById() {
@@ -88,4 +101,13 @@ public class GpProjectManagerManagedBean implements Serializable {
 	public void setPmList(List<GpProjectManager> pmList) {
 		this.pmList = pmList;
 	}
+	
+	public UIComponent getSaveButton() {
+		return saveButton;
+	}
+
+	public void setSaveButton(UIComponent saveButton) {
+		this.saveButton = saveButton;
+	}
+	
 }

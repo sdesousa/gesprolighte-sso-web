@@ -26,60 +26,75 @@
 				<h:inputHidden value="#{ctrProjectManagerBean.pmDataBean.id}"
 					required="true" id="id" />
 
-				<h:outputText value="#{msg.register_file_number}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectManagerBean.pmDataBean.fileNumber}" required="true"
-					id="fileNumber"
-					requiredMessage="#{msg.register_filenumber_required}" />
+				<div>
+					<h:outputText value="#{msg.register_file_number}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectManagerBean.pmDataBean.fileNumber}" required="true"
+						id="fileNumber"
+						requiredMessage="#{msg.register_filenumber_required}" />
+				</div>
 				<h:message for="fileNumber" style="color : red" />
 
-
-				<h:outputText value="#{msg.register_firstname}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectManagerBean.pmDataBean.firstname}" required="true"
-					id="prenom" requiredMessage="#{msg.register_prenom_required}" />
+				<div>
+					<h:outputText value="#{msg.register_firstname}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectManagerBean.pmDataBean.firstname}" required="true"
+						id="prenom" requiredMessage="#{msg.register_firstname_required}" />
+				</div>
 				<h:message for="prenom" style="color : red" />
 
-
-				<h:outputText value="#{msg.register_name}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectManagerBean.pmDataBean.lastname}" required="true"
-					id="nom" />
+				<div>
+					<h:outputText value="#{msg.register_name}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectManagerBean.pmDataBean.lastname}" required="true"
+						id="nom"
+						requiredMessage="#{msg.register_name_required}" />
+				</div>
 				<h:message for="nom" style="color : red" />
 
+				<div>
+					<h:outputText value="#{msg.register_mail}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectManagerBean.pmDataBean.email}" required="true"
+						requiredMessage="#{msg.register_mail_required}"
+						validator="#{ctrProjectManagerBean.validateEmail}" id="email" />
+				</div>
+				<h:message for="email" style="color : red" />
 
-				<h:outputText value="#{msg.register_mail}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectManagerBean.pmDataBean.email}" required="true"
-					validator="#{ctrProjectManagerBean.validateEmail}" id="email" />
-				<h:message for="email" />
+				<div>
+					<h:outputText value="#{msg.register_login}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectManagerBean.pmDataBean.login}" required="true"
+						id="login"
+						requiredMessage="#{msg.register_login_required}" />
+				</div>
+				<h:message for="login" style="color : red" />
 
+				<div>
+					<h:outputText value="#{msg.register_password}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectManagerBean.pmDataBean.password}" required="true"
+						id="password" type="password"
+						requiredMessage="#{msg.register_password_required}" />
+				</div>
+				<h:message for="password" style="color : red" />
 
-				<h:outputText value="#{msg.register_login}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectManagerBean.pmDataBean.login}" required="true"
-					id="login" />
-				<h:message for="login" />
+				<div>
+					<h:outputText value="#{msg.register_phone_number}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectManagerBean.pmDataBean.phoneNumber}" required="true"
+						id="phoneNumber"
+						requiredMessage="#{msg.register_phone_number_required}" />
+				</div>
+				<h:message for="phoneNumber" style="color : red" />
 
-
-				<h:outputText value="#{msg.register_password}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectManagerBean.pmDataBean.password}" required="true"
-					id="password" type="password" />
-				<h:message for="password" />
-
-
-				<h:outputText value="#{msg.register_phone_number}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectManagerBean.pmDataBean.phoneNumber}" required="true"
-					id="phoneNumber" />
-				<h:message for="phoneNumber" />
-
-
-				<br />
+				<br/>
 				<h:commandButton styleClass="btn btn-success"
 					value="#{msg.btn_update}"
-					action="#{ctrProjectManagerBean.updateEmployee}" />
+					binding="#{ctrProjectManagerBean.saveButton}"
+					action="#{ctrProjectManagerBean.updateEmployee}" id="saveButton" />
+				<br/>
+				<h:message for="saveButton" style="color : red" />
 
 			</h:form>
 		</div>
