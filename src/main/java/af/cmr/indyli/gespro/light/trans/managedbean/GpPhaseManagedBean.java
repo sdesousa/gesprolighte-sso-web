@@ -42,6 +42,7 @@ public class GpPhaseManagedBean implements Serializable {
 			phsDataBean.setGpProject(prjService.findById(prjId));
 			this.phsService.create(this.phsDataBean);
 			this.phsList = this.phsService.findAll();
+			phsDataBean = new GpPhase();
 			return "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
@@ -60,6 +61,8 @@ public class GpPhaseManagedBean implements Serializable {
 			phsDataBean.setGpProject(prjService.findById(prjId));
 			this.phsService.update(this.phsDataBean);
 			this.phsList = this.phsService.findAll();
+			phsDataBean = new GpPhase();
+			prjId = null;
 			return "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());

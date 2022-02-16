@@ -48,6 +48,7 @@ public class GpEmployeeManagedBean implements Serializable {
 				this.empService.create(this.empDataBean);
 			}
 			this.empList = this.empService.findAll();
+			empDataBean = new GpEmployee();
 			return "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
@@ -86,6 +87,7 @@ public class GpEmployeeManagedBean implements Serializable {
 		try {
 			this.empService.update(this.empDataBean);
 			this.empList = this.empService.findAll();
+			empDataBean = new GpEmployee();
 			return "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());

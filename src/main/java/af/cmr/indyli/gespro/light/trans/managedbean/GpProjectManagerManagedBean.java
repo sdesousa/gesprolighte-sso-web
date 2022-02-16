@@ -39,6 +39,7 @@ public class GpProjectManagerManagedBean implements Serializable {
 		try {
 			this.pmService.create(this.pmDataBean);
 			this.pmList = this.pmService.findAll();
+			pmDataBean = new GpProjectManager();
 			return "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
@@ -69,6 +70,7 @@ public class GpProjectManagerManagedBean implements Serializable {
 		try {
 			this.pmService.update(this.pmDataBean);
 			this.pmList = this.pmService.findAll();
+			pmDataBean = new GpProjectManager();
 			return "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());

@@ -53,6 +53,7 @@ public class GpProjectManagedBean implements Serializable {
 			prjDataBean.setGpChefProjet(empService.findById(pmId));
 			this.prjService.create(this.prjDataBean);
 			this.prjList = this.prjService.findAll();
+			prjDataBean = new GpProject();
 			return "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
@@ -75,6 +76,9 @@ public class GpProjectManagedBean implements Serializable {
 			prjDataBean.setGpChefProjet(empService.findById(pmId));
 			this.prjService.update(this.prjDataBean);
 			this.prjList = this.prjService.findAll();
+			prjDataBean = new GpProject();
+			orgId = null;
+			pmId = null;
 			return "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());

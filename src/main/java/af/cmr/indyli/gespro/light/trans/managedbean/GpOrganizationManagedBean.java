@@ -37,6 +37,7 @@ public class GpOrganizationManagedBean implements Serializable {
 	public String saveOrganization() throws GesproBusinessException {
 		this.orgService.create(this.orgDataBean);
 		this.orgList = this.orgService.findAll();
+		orgDataBean = new GpOrganization();
 		return "success";
 	}
 	
@@ -59,6 +60,7 @@ public class GpOrganizationManagedBean implements Serializable {
 	public String updateOrganization() throws GesproBusinessException {
 		this.orgService.update(this.orgDataBean);
 		this.orgList = this.orgService.findAll();
+		orgDataBean = new GpOrganization();
 		return "success";
 	}
 
