@@ -25,76 +25,99 @@
 					<h:outputText value="#{msg.register_form_msg}" />
 				</h4>
 
-				<h:outputText value="#{msg.prjCode}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectBean.prjDataBean.projectCode}" required="true"
-					id="projectCode"
-					requiredMessage="#{msg.prjCode_required}" />
+				<div>
+					<h:outputText value="#{msg.prjCode}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectBean.prjDataBean.projectCode}" required="true"
+						id="projectCode"
+						requiredMessage="#{msg.prjCode_required}" />
+				</div>
 				<h:message for="projectCode" style="color : red" />
-				
-				<h:outputText value="#{msg.prjName}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectBean.prjDataBean.name}" required="true"
-					id="nom"
-					requiredMessage="#{msg.prjName_required}" />
+
+				<div>
+					<h:outputText value="#{msg.prjName}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectBean.prjDataBean.name}" required="true"
+						id="nom"
+						requiredMessage="#{msg.prjName_required}" />
+				</div>				
 				<h:message for="nom" style="color : red" />
-
-				<h:outputText value="#{msg.prjDescription}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectBean.prjDataBean.description}" required="true"
-					id="description"
-					requiredMessage="#{msg.prjDescription_required}" />
-				<h:message for="description" />
-
-				<h:outputText value="#{msg.prjStartDate}" />
-				<p:datePicker styleClass="form-control"
-					value="#{ctrProjectBean.prjDataBean.startDate}" required="true"
-					id="startDate"
-					requiredMessage="#{msg.prjStartDate_required}" >
-					</p:datePicker>
-				<h:message for="startDate" />
-
-				<h:outputText value="#{msg.prjEndDate}" />
-				<p:datePicker styleClass="form-control"
-					value="#{ctrProjectBean.prjDataBean.endDate}" required="true"
-					id="endDate"
-					requiredMessage="#{msg.prjEndDate_required}" />
-				<h:message for="endDate" />
-
-				<h:outputText value="#{msg.prjAmount}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrProjectBean.prjDataBean.amount}" required="true"
-					id="amount"
-					requiredMessage="#{msg.prjAmount_required}" />
-				<h:message for="amount" />
 				
-				<h:outputText value="#{msg.prjOrg}" />
-				<h:selectOneMenu styleClass="form-control"
-					value="#{ctrProjectBean.orgId}" required="true"
-					id="organization">
-					<f:selectItems value="#{ctrProjectBean.organizations}" 
-						var="org" 
-						itemValue="#{org.id}"
-						itemLabel="#{org.name}" /> 
-				</h:selectOneMenu>
-				<h:message for="organization" />
+				<div>
+					<h:outputText value="#{msg.prjDescription}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectBean.prjDataBean.description}" required="true"
+						id="description"
+						requiredMessage="#{msg.prjDescription_required}" />
+				</div>
+				<h:message for="description" style="color : red" />
+
+				<div>
+					<h:outputText value="#{msg.prjStartDate}" />
+					<p:datePicker styleClass="form-control"
+						value="#{ctrProjectBean.prjDataBean.startDate}" required="true"
+						id="startDate"
+						requiredMessage="#{msg.prjStartDate_required}" >
+						</p:datePicker>
+				</div>
+				<h:message for="startDate" style="color : red" />
+
+				<div>
+					<h:outputText value="#{msg.prjEndDate}" />
+					<p:datePicker styleClass="form-control"
+						value="#{ctrProjectBean.prjDataBean.endDate}" required="true"
+						id="endDate"
+						requiredMessage="#{msg.prjEndDate_required}" />
+				</div>
+				<h:message for="endDate" style="color : red" />
+
+				<div>
+					<h:outputText value="#{msg.prjAmount}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrProjectBean.prjDataBean.amount}" required="true"
+						id="amount"
+						requiredMessage="#{msg.prjAmount_required}" />
+				</div>
+				<h:message for="amount" style="color : red" />
 				
-				<h:outputText value="#{msg.prjPm}" />
-				<h:selectOneMenu styleClass="form-control"
-					value="#{ctrProjectBean.pmId}" required="true"
-					id="projectManager">
-					<f:selectItems value="#{ctrProjectBean.projectManagers}" 
-						var="pm" 
-						itemValue="#{pm.id}"
-						itemLabel="#{pm.fullname}" /> 
-				</h:selectOneMenu>
-				<h:message for="projectManager" />
+				<div>
+					<h:outputText value="#{msg.prjOrg}" />
+					<h:selectOneMenu styleClass="form-control"
+						value="#{ctrProjectBean.orgId}" required="true"
+						id="organization"
+						requiredMessage="#{msg.prjOrg_required}" >
+						<f:selectItem itemLabel="#{msg.prjOrg_choose}" />
+						<f:selectItems value="#{ctrProjectBean.organizations}" 
+							var="org" 
+							itemValue="#{org.id}"
+							itemLabel="#{org.name}" /> 
+					</h:selectOneMenu>
+				</div>
+				<h:message for="organization" style="color : red" />
+				
+				<div>
+					<h:outputText value="#{msg.prjPm}" />
+					<h:selectOneMenu styleClass="form-control"
+						value="#{ctrProjectBean.pmId}" required="true"
+						id="projectManager"
+						requiredMessage="#{msg.prjPm_required}" >
+						<f:selectItem itemLabel="#{msg.prjPm_choose}" />
+						<f:selectItems value="#{ctrProjectBean.projectManagers}" 
+							var="pm" 
+							itemValue="#{pm.id}"
+							itemLabel="#{pm.fullname}" /> 
+					</h:selectOneMenu>
+				</div>
+				<h:message for="projectManager" style="color : red" />
 
 				<br/>
-					<h:commandButton styleClass="btn btn-success"
-						value="#{msg.btn_success}"
-						action="#{ctrProjectBean.saveProject}" />
-				
+				<h:commandButton styleClass="btn btn-success"
+					value="#{msg.btn_success}"
+					binding="#{ctrProjectBean.saveButton}"
+					action="#{ctrProjectBean.saveProject}" id="saveButton" />
+				<br/>
+				<h:message for="saveButton" style="color : red" />	
+
 			</h:form>
 		</div>
 	</div>

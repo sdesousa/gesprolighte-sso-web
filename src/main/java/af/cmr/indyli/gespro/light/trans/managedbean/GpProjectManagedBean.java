@@ -3,8 +3,10 @@ package af.cmr.indyli.gespro.light.trans.managedbean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 import af.cmr.indyli.gespro.light.business.entity.GpOrganization;
@@ -37,6 +39,7 @@ public class GpProjectManagedBean implements Serializable {
 	private List<GpProjectManager> projectManagers;
 	private Integer orgId;
 	private Integer pmId;
+	private UIComponent saveButton;
 
 	public GpProjectManagedBean() {
 		this.prjList = this.prjService.findAll();
@@ -44,11 +47,20 @@ public class GpProjectManagedBean implements Serializable {
 
 	
 	public String saveProject() throws GesproBusinessException {
-		prjDataBean.setGpOrganization(orgService.findById(orgId));
-		prjDataBean.setGpChefProjet(empService.findById(pmId));
-		this.prjService.create(this.prjDataBean);
-		this.prjList = this.prjService.findAll();
-		return "success";
+		
+		try {
+			prjDataBean.setGpOrganization(orgService.findById(orgId));
+			prjDataBean.setGpChefProjet(empService.findById(pmId));
+			this.prjService.create(this.prjDataBean);
+			this.prjList = this.prjService.findAll();
+			return "success";
+		} catch (GesproBusinessException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(saveButton.getClientId(context), msg);
+			e.printStackTrace();
+		}
+		return "fail";
 	}
 
 	public String addProject() {
@@ -58,9 +70,19 @@ public class GpProjectManagedBean implements Serializable {
 	}
 
 	public String updateProject() throws GesproBusinessException {
-		this.prjService.update(this.prjDataBean);
-		this.prjList = this.prjService.findAll();
-		return "success";
+		try {
+			prjDataBean.setGpOrganization(orgService.findById(orgId));
+			prjDataBean.setGpChefProjet(empService.findById(pmId));
+			this.prjService.update(this.prjDataBean);
+			this.prjList = this.prjService.findAll();
+			return "success";
+		} catch (GesproBusinessException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(saveButton.getClientId(context), msg);
+			e.printStackTrace();
+		}
+		return "fail";
 	}
 
 	public String updatePrjById() {
@@ -131,6 +153,14 @@ public class GpProjectManagedBean implements Serializable {
 
 	public void setPmId(Integer pmId) {
 		this.pmId = pmId;
+	}
+	
+	public UIComponent getSaveButton() {
+		return saveButton;
+	}
+
+	public void setSaveButton(UIComponent saveButton) {
+		this.saveButton = saveButton;
 	}
 	
 }

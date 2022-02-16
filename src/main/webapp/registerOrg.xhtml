@@ -23,48 +23,60 @@
 					<h:outputText value="#{msg.register_form_msg}" />
 				</h4>
 
-				<h:outputText value="#{msg.orgCode}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrOrganizationBean.orgDataBean.orgCode}" required="true"
-					id="orgCode"
-					requiredMessage="#{msg.orgCode_required}" />
+				<div>
+					<h:outputText value="#{msg.orgCode}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrOrganizationBean.orgDataBean.orgCode}" required="true"
+						id="orgCode"
+						requiredMessage="#{msg.orgCode_required}" />
+				</div>
 				<h:message for="orgCode" style="color : red" />
-				
-				<h:outputText value="#{msg.orgName}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrOrganizationBean.orgDataBean.name}" required="true"
-					id="name"
-					requiredMessage="#{msg.orgName_required}" />
+
+				<div>
+					<h:outputText value="#{msg.orgName}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrOrganizationBean.orgDataBean.name}" required="true"
+						id="name"
+						requiredMessage="#{msg.orgName_required}" />
+				</div>				
 				<h:message for="name" style="color : red" />
 				
-				<h:outputText value="#{msg.orgPhoneNumber}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrOrganizationBean.orgDataBean.phoneNumber}" required="true"
-					id="phoneNumber"
-					requiredMessage="#{msg.orgPhoneNumber_required}" />
+				<div>
+					<h:outputText value="#{msg.orgPhoneNumber}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrOrganizationBean.orgDataBean.phoneNumber}" required="true"
+						id="phoneNumber"
+						requiredMessage="#{msg.orgPhoneNumber_required}" />
+				</div>
 				<h:message for="phoneNumber" style="color : red" />
 
-				<h:outputText value="#{msg.orgContactName}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrOrganizationBean.orgDataBean.contactName}" required="true"
-					id="contactName"
-					requiredMessage="#{msg.orgContactName_required}" />
+				<div>
+					<h:outputText value="#{msg.orgContactName}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrOrganizationBean.orgDataBean.contactName}" required="true"
+						id="contactName"
+						requiredMessage="#{msg.orgContactName_required}" />
+				</div>
 				<h:message for="contactName" style="color : red" />
-				
-				<h:outputText value="#{msg.orgContactEmail}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrOrganizationBean.orgDataBean.contactEmail}" required="true"
-					validator="#{ctrOrganizationBean.validateEmail}"
-					id="contactEmail"
-					requiredMessage="#{msg.orgContactEmail_required}" />
+
+				<div>
+					<h:outputText value="#{msg.orgContactEmail}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrOrganizationBean.orgDataBean.contactEmail}" required="true"
+						validator="#{ctrOrganizationBean.validateEmail}"
+						id="contactEmail"
+						requiredMessage="#{msg.orgContactEmail_required}" />
+				</div>				
 				<h:message for="contactEmail" style="color : red" />
-				
-				<h:outputText value="#{msg.orgAdrWeb}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrOrganizationBean.orgDataBean.adrWeb}" required="true"
-					id="adrweb"
-					requiredMessage="#{msg.orgAdrWeb_required}" />
-				<h:message for="contactAdrWeb" style="color : red" />
+
+				<div>
+					<h:outputText value="#{msg.orgAdrWeb}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrOrganizationBean.orgDataBean.adrWeb}" required="true"
+						id="adrWeb"
+						requiredMessage="#{msg.orgAdrWeb_required}" />
+				</div>				
+				<h:message for="adrWeb" style="color : red" />
 
 				<br/>
 					<h:commandButton styleClass="btn btn-success"
