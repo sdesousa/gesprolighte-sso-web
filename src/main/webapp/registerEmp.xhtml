@@ -24,63 +24,82 @@
 					<h:outputText value="#{msg.register_form_msg}" />
 				</h4>
 
-				<h:outputText value="#{msg.register_file_number}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrEmployeeBean.empDataBean.fileNumber}" required="true"
-					id="fileNumber"
-					requiredMessage="#{msg.register_filenumber_required}" />
+				<div>
+					<h:outputText value="#{msg.register_file_number}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrEmployeeBean.empDataBean.fileNumber}" required="true"
+						id="fileNumber"
+						requiredMessage="#{msg.register_filenumber_required}" />
+				</div>
 				<h:message for="fileNumber" style="color : red" />
 
-				<h:outputText value="#{msg.register_firstname}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrEmployeeBean.empDataBean.firstname}" required="true"
-					id="prenom" requiredMessage="#{msg.register_prenom_required}" />
+				<div>
+					<h:outputText value="#{msg.register_firstname}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrEmployeeBean.empDataBean.firstname}" required="true"
+						id="prenom" requiredMessage="#{msg.register_prenom_required}" />
+				</div>
 				<h:message for="prenom" style="color : red" />
 
-				<h:outputText value="#{msg.register_name}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrEmployeeBean.empDataBean.lastname}" required="true"
-					id="nom" />
+				<div>
+					<h:outputText value="#{msg.register_name}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrEmployeeBean.empDataBean.lastname}" required="true"
+						id="nom" />
+				</div>
 				<h:message for="nom" style="color : red" />
 
-				<h:outputText value="#{msg.register_mail}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrEmployeeBean.empDataBean.email}" required="true"
-					validator="#{ctrEmployeeBean.validateEmail}" id="email" />
-				<h:message for="email" />
+				<div>
+					<h:outputText value="#{msg.register_mail}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrEmployeeBean.empDataBean.email}" required="true"
+						validator="#{ctrEmployeeBean.validateEmail}" id="email" />
+				</div>
+				<h:message for="email" style="color : red" />
 
 
-				<h:outputText value="#{msg.register_login}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrEmployeeBean.empDataBean.login}" required="true"
-					id="login" />
-				<h:message for="login" />
+				<div>
+					<h:outputText value="#{msg.register_login}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrEmployeeBean.empDataBean.login}" required="true"
+						id="login" />
+				</div>
+				<h:message for="login" style="color : red" />
 
 
-				<h:outputText value="#{msg.register_password}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrEmployeeBean.empDataBean.password}" required="true"
-					id="password" type="password" />
-				<h:message for="password" />
+				<div>
+					<h:outputText value="#{msg.register_password}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrEmployeeBean.empDataBean.password}" required="true"
+						id="password" type="password" />
+				</div>
+				<h:message for="password" style="color : red" />
 
 
-				<h:outputText value="#{msg.register_phone_number}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrEmployeeBean.empDataBean.phoneNumber}" required="true"
-					id="phoneNumber" />
-				<h:message for="phoneNumber" />
+				<div>
+					<h:outputText value="#{msg.register_phone_number}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrEmployeeBean.empDataBean.phoneNumber}" required="true"
+						id="phoneNumber" />
+				</div>
+				<h:message for="phoneNumber" style="color : red" />
 
-				<h:outputText value="#{msg.register_is_project_manager}"/>
-				<h:selectBooleanCheckbox styleClass="checkPm"
-					value="#{ctrEmployeeBean.isPM}"
-					id="isPM" />
-				<h:message for="isPM" />
+				<div>
+					<h:outputText value="#{msg.register_is_project_manager}"/>
+					<h:selectBooleanCheckbox styleClass="checkPm"
+						value="#{ctrEmployeeBean.isPM}"
+						id="isPM" />
+				</div>
+				<h:message for="isPM" style="color : red" />
 
 				<br/>
-					<h:commandButton styleClass="btn btn-success"
-						value="#{msg.register_submit_button}"
-						action="#{ctrEmployeeBean.saveEmployee}" />
-				
+				<h:commandButton styleClass="btn btn-success"
+					value="#{msg.register_submit_button}"
+					binding="#{ctrEmployeeBean.saveButton}"
+					action="#{ctrEmployeeBean.saveEmployee}" id="saveButton" />
+				<br/>
+				<h:message for="saveButton" style="color : red" />
+			
 			</h:form>
 		</div>
 	</div>

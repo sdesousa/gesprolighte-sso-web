@@ -33,20 +33,30 @@ public class GpEmployeeManagedBean implements Serializable {
 
 	private List<GpEmployee> empList = null;
 	private boolean isPM = false;
+	private UIComponent saveButton;
 
 	public GpEmployeeManagedBean() {
 		this.empList = this.empService.findAll();
 	}
 
-	public String saveEmployee() throws GesproBusinessException {
-		if(isPM) {
-			GpProjectManager pm = new GpProjectManager(this.empDataBean);
-			this.pmServive.create(pm);
-		} else {
-			this.empService.create(this.empDataBean);
+	public String saveEmployee() throws GesproBusinessException, ValidatorException {
+		try {
+			if(isPM) {
+				GpProjectManager pm = new GpProjectManager(this.empDataBean);
+				this.pmServive.create(pm);
+			} else {
+				this.empService.create(this.empDataBean);
+			}
+			this.empList = this.empService.findAll();
+			return "success";
+		} catch (GesproBusinessException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(saveButton.getClientId(context), msg);
+			e.printStackTrace();
 		}
-		this.empList = this.empService.findAll();
-		return "success";
+		return "fail";
+		
 	}
 	
 	public String promoteEmpById() {
@@ -58,10 +68,6 @@ public class GpEmployeeManagedBean implements Serializable {
 
 	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
 		String eMail = (String) value;
-//		if (eMail.indexOf("@") < 0) {
-//			FacesMessage message = new FacesMessage("Adresse Email invalide !");
-//			throw new ValidatorException(message);
-//		}
 		Pattern p = Pattern.compile("[\\w\\.-]*[a-zA-Z0-9_]@[\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]");
 		Matcher m = p.matcher(eMail);
 		if (!m.matches()) {
@@ -76,10 +82,18 @@ public class GpEmployeeManagedBean implements Serializable {
 		return "success";
 	}
 
-	public String updateEmployee() throws GesproBusinessException {
-		this.empService.update(this.empDataBean);
-		this.empList = this.empService.findAll();
-		return "success";
+	public String updateEmployee() throws GesproBusinessException, ValidatorException {
+		try {
+			this.empService.update(this.empDataBean);
+			this.empList = this.empService.findAll();
+			return "success";
+		} catch (GesproBusinessException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(saveButton.getClientId(context), msg);
+			e.printStackTrace();
+		}
+		return "fail";
 	}
 
 	public String deleteEmpById() {
@@ -112,4 +126,13 @@ public class GpEmployeeManagedBean implements Serializable {
 	public void setIsPM(boolean isPM) {
 		this.isPM = isPM;
 	}
+
+	public UIComponent getSaveButton() {
+		return saveButton;
+	}
+
+	public void setSaveButton(UIComponent saveButton) {
+		this.saveButton = saveButton;
+	}
+	
 }
