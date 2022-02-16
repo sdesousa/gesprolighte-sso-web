@@ -28,78 +28,96 @@
 				<h:inputHidden value="#{ctrPhaseBean.phsDataBean.id}"
 					required="true" id="id" />
 
-				<h:outputText value="#{msg.phsCode}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrPhaseBean.phsDataBean.phaseCode}" required="true"
-					id="phaseCode"
-					requiredMessage="#{msg.phsCode_required}" />
+				<div>
+					<h:outputText value="#{msg.phsCode}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrPhaseBean.phsDataBean.phaseCode}" required="true"
+						id="phaseCode"
+						requiredMessage="#{msg.phsCode_required}" />
+				</div>
 				<h:message for="phaseCode" style="color : red" />
 				
-				<h:outputText value="#{msg.phsDescription}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrPhaseBean.phsDataBean.description}" required="true"
-					id="description"
-					requiredMessage="#{msg.phsDescription_required}" />
+				<div>
+					<h:outputText value="#{msg.phsDescription}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrPhaseBean.phsDataBean.description}" required="true"
+						id="description"
+						requiredMessage="#{msg.phsDescription_required}" />
+				</div>
 				<h:message for="description" style="color : red" />
 
-				<h:outputText value="#{msg.phsStartDate}" />
-				<p:datePicker styleClass="form-control"
-					value="#{ctrPhaseBean.phsDataBean.startDate}" required="true"
-					id="startDate"
-					requiredMessage="#{msg.phsStartDate_required}" >
-					</p:datePicker>
-				<h:message for="startDate" />
+				<div>
+					<h:outputText value="#{msg.phsStartDate}" />
+					<p:datePicker styleClass="form-control"
+						value="#{ctrPhaseBean.phsDataBean.startDate}" required="true"
+						id="startDate"
+						requiredMessage="#{msg.phsStartDate_required}" >
+						</p:datePicker>
+				</div>
+				<h:message for="startDate" style="color : red" />
 
-				<h:outputText value="#{msg.phsEndDate}" />
-				<p:datePicker styleClass="form-control"
-					value="#{ctrPhaseBean.phsDataBean.endDate}" required="true"
-					id="endDate"
-					requiredMessage="#{msg.phsEndDate_required}" />
-				<h:message for="endDate" />
+				<div>
+					<h:outputText value="#{msg.phsEndDate}" />
+					<p:datePicker styleClass="form-control"
+						value="#{ctrPhaseBean.phsDataBean.endDate}" required="true"
+						id="endDate"
+						requiredMessage="#{msg.phsEndDate_required}" />
+				</div>
+				<h:message for="endDate" style="color : red" />
 
-				<h:outputText value="#{msg.phsAmount}" />
-				<h:inputText styleClass="form-control"
-					value="#{ctrPhaseBean.phsDataBean.amount}" required="true"
-					id="amount"
-					requiredMessage="#{msg.phsAmount_required}" />
-				<h:message for="amount" />
-				
-				<h:outputText value="#{msg.phsStatus}" />
-				<h:selectOneRadio styleClass="radioStatus"
-					value="#{ctrPhaseBean.phsDataBean.status}" required="true"
-					id="status"
-					requiredMessage="#{msg.phsStatus_required}" >
-					<f:selectItem itemValue = "1" itemLabel = "#{msg.yes}" /> 
-   					<f:selectItem itemValue = "0" itemLabel = "#{msg.no}" />
-				</h:selectOneRadio>
-				<h:message for="status" />
-				
-				<h:outputText value="#{msg.phsIsEnded}" />
-				<h:selectOneRadio styleClass="radioStatus"
-					value="#{ctrPhaseBean.phsDataBean.isEnded}" required="true"
-					id="isEnded"
-					requiredMessage="#{msg.phsIsEnded_required}">
-					<f:selectItem itemValue = "1" itemLabel = "#{msg.yes}" /> 
-   					<f:selectItem itemValue = "0" itemLabel = "#{msg.no}" />
-				</h:selectOneRadio>
-				<h:message for="isEnded" />
-				
-				<h:outputText value="#{msg.phsProject}" />
-				<h:selectOneMenu styleClass="form-control"
-					value="#{ctrPhaseBean.prjId}" required="true"
-					id="project">
-					<f:selectItems value="#{ctrPhaseBean.projects}" 
-						var="prj" 
-						itemValue="#{prj.id}"
-						itemLabel="#{prj.name}" /> 
-				</h:selectOneMenu>
-				<h:message for="project" />
+				<div>
+					<h:outputText value="#{msg.phsAmount}" />
+					<h:inputText styleClass="form-control"
+						value="#{ctrPhaseBean.phsDataBean.amount}" required="true"
+						id="amount"
+						requiredMessage="#{msg.phsAmount_required}" />
+				</div>
+				<h:message for="amount" style="color : red" />
 
+				<div>
+					<h:outputText value="#{msg.phsStatus}" />
+					<h:selectOneRadio styleClass="radioStatus"
+						value="#{ctrPhaseBean.phsDataBean.status}" required="true"
+						id="status"
+						requiredMessage="#{msg.phsStatus_required}" >
+						<f:selectItem itemValue = "1" itemLabel = "#{msg.yes}" /> 
+	   					<f:selectItem itemValue = "0" itemLabel = "#{msg.no}" />
+					</h:selectOneRadio>
+				</div>				
+				<h:message for="status" style="color : red" />
+
+				<div>
+					<h:outputText value="#{msg.phsIsEnded}" />
+					<h:selectOneRadio styleClass="radioStatus"
+						value="#{ctrPhaseBean.phsDataBean.isEnded}" required="true"
+						id="isEnded"
+						requiredMessage="#{msg.phsIsEnded_required}">
+						<f:selectItem itemValue = "1" itemLabel = "#{msg.yes}" /> 
+	   					<f:selectItem itemValue = "0" itemLabel = "#{msg.no}" />
+					</h:selectOneRadio>
+				</div>				
+				<h:message for="isEnded" style="color : red" />
+
+				<div>
+					<h:outputText value="#{msg.phsProject}" />
+					<h:selectOneMenu styleClass="form-control"
+						value="#{ctrPhaseBean.prjId}" required="true"
+						id="project">
+						<f:selectItems value="#{ctrPhaseBean.projects}" 
+							var="prj" 
+							itemValue="#{prj.id}"
+							itemLabel="#{prj.name}" /> 
+					</h:selectOneMenu>
+				</div>				
+				<h:message for="project" style="color : red" />
 
 				<br />
 				<h:commandButton styleClass="btn btn-success"
 					value="#{msg.btn_update}"
-					action="#{ctrPhaseBean.updatePhase}" />
+					binding="#{ctrPhaseBean.saveButton}"
+					action="#{ctrPhaseBean.updatePhase}" id="saveButton" />
+				<br/>
+				<h:message for="saveButton" style="color : red" />
 
 			</h:form>
 		</div>
