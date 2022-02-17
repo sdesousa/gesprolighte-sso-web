@@ -83,7 +83,7 @@
 				<div>
 					<h:outputText value="#{msg.prjOrg}" />
 					<h:selectOneMenu styleClass="form-control"
-						value="#{ctrProjectBean.orgId}" required="true"
+						value="#{ctrProjectBean.prjDataBean.gpOrganization.id}" required="true"
 						id="organization"
 						requiredMessage="#{msg.prjOrg_required}" >
 						<f:selectItem itemLabel="#{msg.prjOrg_choose}" />
@@ -98,7 +98,7 @@
 				<div>
 					<h:outputText value="#{msg.prjPm}" />
 					<h:selectOneMenu styleClass="form-control"
-						value="#{ctrProjectBean.pmId}" required="true"
+						value="#{ctrProjectBean.prjDataBean.gpChefProjet.id}" required="true"
 						id="projectManager"
 						requiredMessage="#{msg.prjPm_required}" >
 						<f:selectItem itemLabel="#{msg.prjPm_choose}" />

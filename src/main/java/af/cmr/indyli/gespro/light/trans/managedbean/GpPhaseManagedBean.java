@@ -25,26 +25,23 @@ public class GpPhaseManagedBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private GpPhase phsDataBean = new GpPhase();
+	private GpPhase phsDataBean;
 	private IGpPhaseService<GpPhase> phsService = new GpPhaseServiceImpl();
 	private IGpProjectService<GpProject> prjService = new GpProjectServiceImpl();
-	private List<GpPhase> phsList = null;
+	private List<GpPhase> phsList;
 	private List<GpProject> projects;
-	private Integer prjId;
 	private UIComponent saveButton;
 
 	public GpPhaseManagedBean() {
 		this.phsList = this.phsService.findAll();
+		this.phsDataBean = new GpPhase();
+		this.phsDataBean.setGpProject(new GpProject());
 	}
 
 	public String savePhase() {
 		String redirect = "fail";
-		this.phsDataBean.setGpProject(prjService.findById(prjId));
 		try {
 			this.phsService.create(this.phsDataBean);
-			this.phsList = this.phsService.findAll();
-			this.phsDataBean = new GpPhase();
-			this.prjId = null;
 			redirect = "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
@@ -52,6 +49,8 @@ public class GpPhaseManagedBean implements Serializable {
 	        context.addMessage(saveButton.getClientId(context), msg);
 			e.printStackTrace();
 		}
+		this.phsList = this.phsService.findAll();
+		this.reinitFields();
 		return redirect;
 	}
 	
@@ -61,12 +60,8 @@ public class GpPhaseManagedBean implements Serializable {
 	}
 	public String updatePhase() {
 		String redirect = "fail";
-		this.phsDataBean.setGpProject(prjService.findById(prjId));
 		try {
 			this.phsService.update(this.phsDataBean);
-			this.phsList = this.phsService.findAll();
-			this.phsDataBean = new GpPhase();
-			this.prjId = null;
 			redirect = "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
@@ -74,13 +69,14 @@ public class GpPhaseManagedBean implements Serializable {
 	        context.addMessage(saveButton.getClientId(context), msg);
 			e.printStackTrace();
 		}
+		this.phsList = this.phsService.findAll();
+		this.reinitFields();
 		return redirect;
 	}
 	public String updatePhsById() {
 		String editPhsId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("phsId");
 		this.phsDataBean = this.phsService.findById(Integer.valueOf(editPhsId));
 		this.projects = this.prjService.findAll();
-		this.prjId = phsDataBean.getGpProject().getId();
 		return "success";
 	}
 	public String deletePhsById() {
@@ -114,20 +110,17 @@ public class GpPhaseManagedBean implements Serializable {
 		this.projects = projects;
 	}
 
-	public Integer getPrjId() {
-		return prjId;
-	}
-
-	public void setPrjId(Integer prjId) {
-		this.prjId = prjId;
-	}
-	
 	public UIComponent getSaveButton() {
 		return saveButton;
 	}
 
 	public void setSaveButton(UIComponent saveButton) {
 		this.saveButton = saveButton;
+	}
+	
+	private void reinitFields() {
+		this.phsDataBean = new GpPhase();
+		this.phsDataBean.setGpProject(new GpProject());
 	}
 
 }

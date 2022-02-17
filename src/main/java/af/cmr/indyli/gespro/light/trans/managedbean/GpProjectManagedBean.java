@@ -29,32 +29,26 @@ public class GpProjectManagedBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private GpProject prjDataBean = new GpProject();
+	private GpProject prjDataBean;
 	private IGpProjectService<GpProject> prjService = new GpProjectServiceImpl();
 	private GpProjectManagerServiceImpl empService = new GpProjectManagerServiceImpl();
 	private GpOrganizationServiceImpl orgService = new GpOrganizationServiceImpl();
-
 	private List<GpProject> prjList = null;
 	private List<GpOrganization> organizations;
 	private List<GpProjectManager> projectManagers;
-	private Integer orgId;
-	private Integer pmId;
 	private UIComponent saveButton;
 
 	public GpProjectManagedBean() {
 		this.prjList = this.prjService.findAll();
+		this.prjDataBean = new GpProject();
+		this.prjDataBean.setGpChefProjet(new GpProjectManager());
+		this.prjDataBean.setGpOrganization(new GpOrganization());
 	}
 
 	public String saveProject() throws GesproBusinessException {
 		String redirect = "fail";
-		this.prjDataBean.setGpOrganization(orgService.findById(orgId));
-		this.prjDataBean.setGpChefProjet(empService.findById(pmId));
 		try {
 			this.prjService.create(this.prjDataBean);
-			this.prjList = this.prjService.findAll();
-			this.prjDataBean = new GpProject();
-			this.orgId = null;
-			this.pmId = null;
 			redirect = "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
@@ -62,6 +56,8 @@ public class GpProjectManagedBean implements Serializable {
             context.addMessage(saveButton.getClientId(context), msg);
 			e.printStackTrace();
 		}
+		this.prjList = this.prjService.findAll();
+		this.reinitFields();
 		return redirect;
 	}
 
@@ -73,14 +69,8 @@ public class GpProjectManagedBean implements Serializable {
 
 	public String updateProject() throws GesproBusinessException {
 		String redirect = "fail";
-		this.prjDataBean.setGpOrganization(orgService.findById(orgId));
-		this.prjDataBean.setGpChefProjet(empService.findById(pmId));
 		try {
 			this.prjService.update(this.prjDataBean);
-			this.prjList = this.prjService.findAll();
-			this.prjDataBean = new GpProject();
-			this.orgId = null;
-			this.pmId = null;
 			redirect = "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
@@ -88,14 +78,14 @@ public class GpProjectManagedBean implements Serializable {
 	        context.addMessage(saveButton.getClientId(context), msg);
 			e.printStackTrace();
 		}
+		this.prjList = this.prjService.findAll();
+		this.reinitFields();
 		return redirect;
 	}
 
 	public String updatePrjById() {
 		String editPrjId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("prjId");
 		this.prjDataBean = this.prjService.findById(Integer.valueOf(editPrjId));
-		this.orgId = this.prjDataBean.getGpOrganization().getId();
-		this.pmId = this.prjDataBean.getGpChefProjet().getId();
 		this.organizations = this.orgService.findAll();
 		this.projectManagers = this.empService.findAll();
 		return "success";
@@ -139,22 +129,6 @@ public class GpProjectManagedBean implements Serializable {
 	public void setProjectManagers(List<GpProjectManager> projectManagers) {
 		this.projectManagers = projectManagers;
 	}
-
-	public Integer getOrgId() {
-		return orgId;
-	}
-
-	public void setOrgId(Integer orgId) {
-		this.orgId = orgId;
-	}
-
-	public Integer getPmId() {
-		return pmId;
-	}
-
-	public void setPmId(Integer pmId) {
-		this.pmId = pmId;
-	}
 	
 	public UIComponent getSaveButton() {
 		return saveButton;
@@ -162,6 +136,12 @@ public class GpProjectManagedBean implements Serializable {
 
 	public void setSaveButton(UIComponent saveButton) {
 		this.saveButton = saveButton;
+	}
+	
+	private void reinitFields() {
+		this.prjDataBean = new GpProject();
+		this.prjDataBean.setGpChefProjet(new GpProjectManager());
+		this.prjDataBean.setGpOrganization(new GpOrganization());
 	}
 	
 }

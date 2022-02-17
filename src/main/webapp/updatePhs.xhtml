@@ -101,7 +101,7 @@
 				<div>
 					<h:outputText value="#{msg.phsProject}" />
 					<h:selectOneMenu styleClass="form-control"
-						value="#{ctrPhaseBean.prjId}" required="true"
+						value="#{ctrPhaseBean.phsDataBean.gpProject.id}" required="true"
 						id="project">
 						<f:selectItems value="#{ctrPhaseBean.projects}" 
 							var="prj" 
