@@ -26,11 +26,11 @@
 	<ui:include src="nav.xhtml"></ui:include>
 	<div class="container">
 
-		<h1>Bienvenue aux phases de projets de la société INDYLI</h1>
+		<h1>#{msg.phs_title}</h1>
 		<h:form>
 
 			<p class="col-md-12 bg-light text-right"><h:commandButton action="#{ctrPhaseBean.addPhase}"
-				value="Ajouter"
+				value="#{msg.btn_add}"
 				styleClass="btn btn-success" /></p>
 
 			<h:dataTable value="#{ctrPhaseBean.phsList}" var="phs"

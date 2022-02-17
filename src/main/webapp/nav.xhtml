@@ -20,11 +20,11 @@
 				</div>
 				<ul class="nav navbar-nav">
 					<!-- <li class="active"><a href="empList.xhtml">Employés</a></li> -->
-					<li class="#{view.viewId == '/empList.xhtml' ? 'active' : ''}"><a href="empList.xhtml">Employés</a></li>
-					<li class="#{view.viewId == '/projectManagerList.xhtml' ? 'active' : ''}"><a href="projectManagerList.xhtml">Chefs Projet</a></li>
-					<li class="#{view.viewId == '/organizationList.xhtml' ? 'active' : ''}"><a href="organizationList.xhtml">Organisations</a></li>
-					<li class="#{view.viewId == '/projectList.xhtml' ? 'active' : ''}"><a href="projectList.xhtml">Projets</a></li>
-					<li class="#{view.viewId == '/phaseList.xhtml' ? 'active' : ''}"><a href="phaseList.xhtml">Phases</a></li>
+					<li class="#{view.viewId == '/empList.xhtml' ? 'active' : ''}"><a href="empList.xhtml">#{msg.nav_employees}</a></li>
+					<li class="#{view.viewId == '/projectManagerList.xhtml' ? 'active' : ''}"><a href="projectManagerList.xhtml">#{msg.nav_projectManagers}</a></li>
+					<li class="#{view.viewId == '/organizationList.xhtml' ? 'active' : ''}"><a href="organizationList.xhtml">#{msg.nav_organizations}</a></li>
+					<li class="#{view.viewId == '/projectList.xhtml' ? 'active' : ''}"><a href="projectList.xhtml">#{msg.nav_projects}</a></li>
+					<li class="#{view.viewId == '/phaseList.xhtml' ? 'active' : ''}"><a href="phaseList.xhtml">#{msg.nav_phases}</a></li>
 				</ul> 
 			</div>
 		</nav>

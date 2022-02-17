@@ -26,11 +26,11 @@
 	<ui:include src="nav.xhtml"></ui:include>
 	<div class="container">
 
-		<h1>Bienvenue aux organisations travaillant avec la société INDYLI</h1>
+		<h1>#{msg.org_title}</h1>
 		<h:form>
 
 			<p class="col-md-12 bg-light text-right"><h:commandButton action="/registerOrg.xhtml?faces-redirect=true"
-				value="Ajouter"
+				value="#{msg.btn_add}"
 				styleClass="btn btn-success" /></p>
 
 			<h:dataTable value="#{ctrOrganizationBean.orgList}" var="org"
