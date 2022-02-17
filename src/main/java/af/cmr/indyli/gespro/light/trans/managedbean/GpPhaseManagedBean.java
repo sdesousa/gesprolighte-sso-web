@@ -37,45 +37,50 @@ public class GpPhaseManagedBean implements Serializable {
 		this.phsList = this.phsService.findAll();
 	}
 
-	public String savePhase() throws GesproBusinessException {
+	public String savePhase() {
+		String redirect = "fail";
+		this.phsDataBean.setGpProject(prjService.findById(prjId));
 		try {
-			phsDataBean.setGpProject(prjService.findById(prjId));
 			this.phsService.create(this.phsDataBean);
 			this.phsList = this.phsService.findAll();
-			phsDataBean = new GpPhase();
-			return "success";
+			this.phsDataBean = new GpPhase();
+			this.prjId = null;
+			redirect = "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
 			FacesContext context = FacesContext.getCurrentInstance();
 	        context.addMessage(saveButton.getClientId(context), msg);
 			e.printStackTrace();
 		}
-		return "fail";
+		return redirect;
 	}
+	
 	public String addPhase() {
 		this.projects = this.prjService.findAll();
 		return "success";
 	}
-	public String updatePhase() throws GesproBusinessException {
+	public String updatePhase() {
+		String redirect = "fail";
+		this.phsDataBean.setGpProject(prjService.findById(prjId));
 		try {
-			phsDataBean.setGpProject(prjService.findById(prjId));
 			this.phsService.update(this.phsDataBean);
 			this.phsList = this.phsService.findAll();
-			phsDataBean = new GpPhase();
-			prjId = null;
-			return "success";
+			this.phsDataBean = new GpPhase();
+			this.prjId = null;
+			redirect = "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
 			FacesContext context = FacesContext.getCurrentInstance();
 	        context.addMessage(saveButton.getClientId(context), msg);
 			e.printStackTrace();
 		}
-		return "fail";
+		return redirect;
 	}
 	public String updatePhsById() {
 		String editPhsId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("phsId");
 		this.phsDataBean = this.phsService.findById(Integer.valueOf(editPhsId));
 		this.projects = this.prjService.findAll();
+		this.prjId = phsDataBean.getGpProject().getId();
 		return "success";
 	}
 	public String deletePhsById() {

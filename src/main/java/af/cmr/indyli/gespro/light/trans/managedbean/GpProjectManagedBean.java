@@ -45,23 +45,24 @@ public class GpProjectManagedBean implements Serializable {
 		this.prjList = this.prjService.findAll();
 	}
 
-	
 	public String saveProject() throws GesproBusinessException {
-		
+		String redirect = "fail";
+		this.prjDataBean.setGpOrganization(orgService.findById(orgId));
+		this.prjDataBean.setGpChefProjet(empService.findById(pmId));
 		try {
-			prjDataBean.setGpOrganization(orgService.findById(orgId));
-			prjDataBean.setGpChefProjet(empService.findById(pmId));
 			this.prjService.create(this.prjDataBean);
 			this.prjList = this.prjService.findAll();
-			prjDataBean = new GpProject();
-			return "success";
+			this.prjDataBean = new GpProject();
+			this.orgId = null;
+			this.pmId = null;
+			redirect = "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(saveButton.getClientId(context), msg);
 			e.printStackTrace();
 		}
-		return "fail";
+		return redirect;
 	}
 
 	public String addProject() {
@@ -71,27 +72,30 @@ public class GpProjectManagedBean implements Serializable {
 	}
 
 	public String updateProject() throws GesproBusinessException {
+		String redirect = "fail";
+		this.prjDataBean.setGpOrganization(orgService.findById(orgId));
+		this.prjDataBean.setGpChefProjet(empService.findById(pmId));
 		try {
-			prjDataBean.setGpOrganization(orgService.findById(orgId));
-			prjDataBean.setGpChefProjet(empService.findById(pmId));
 			this.prjService.update(this.prjDataBean);
 			this.prjList = this.prjService.findAll();
-			prjDataBean = new GpProject();
-			orgId = null;
-			pmId = null;
-			return "success";
+			this.prjDataBean = new GpProject();
+			this.orgId = null;
+			this.pmId = null;
+			redirect = "success";
 		} catch (GesproBusinessException e) {
 			FacesMessage msg = new FacesMessage(e.getMessage());
 			FacesContext context = FacesContext.getCurrentInstance();
 	        context.addMessage(saveButton.getClientId(context), msg);
 			e.printStackTrace();
 		}
-		return "fail";
+		return redirect;
 	}
 
 	public String updatePrjById() {
 		String editPrjId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("prjId");
 		this.prjDataBean = this.prjService.findById(Integer.valueOf(editPrjId));
+		this.orgId = this.prjDataBean.getGpOrganization().getId();
+		this.pmId = this.prjDataBean.getGpChefProjet().getId();
 		this.organizations = this.orgService.findAll();
 		this.projectManagers = this.empService.findAll();
 		return "success";
@@ -103,13 +107,6 @@ public class GpProjectManagedBean implements Serializable {
 		this.prjList = this.prjService.findAll();
 		return "success";
 	}
-	
-//	public String getProjectPhase() {
-//		String projectId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-//		// TODO : Récupérer Un project à partir de la valeur entière de la chaîne de
-//		// caractères projectId
-//		return "success";
-//	}
 
 	public GpProject getPrjDataBean() {
 		return prjDataBean;
